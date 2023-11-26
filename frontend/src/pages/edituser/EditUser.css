@@ -1,0 +1,18 @@
+/* UserProfile.css */
+
+/* Đặt màu nền cho nội dung */
+.user-profile-content {
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: center; /* Canh giữa nội dung */
+  }
+  
+  /* Đặt kiểu dáng cho thẻ Card */
+  .user-profile-card {
+    width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: white;
+  }
+  

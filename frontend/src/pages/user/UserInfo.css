@@ -1,0 +1,43 @@
+/* Trang UserProfileView.css (hoặc bạn có thể sử dụng Styled Components hoặc Emotion) */
+
+/* Đặt chiều rộng của thẻ Card và canh giữa trang */
+.card-container {
+    width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Tùy chỉnh hình đại diện */
+  .avatar {
+    display: flex;
+    justify-content: center;
+    width: 128px;
+    height: 128px;
+    margin: 0 auto 16px; /* Canh giữa và tạo khoảng cách với các thông tin cá nhân */
+    box-shadow: 5px #AAA;
+
+  }
+  
+  /* Tùy chỉnh phông chữ và khoảng cách cho thông tin cá nhân */
+  .profile-info {
+    margin-bottom: 24px;
+    margin-left: 200px;
+  }
+  
+  /* Tùy chỉnh màu sắc và kích thước của tiêu đề */
+  .title {
+    color: #1890ff; /* Màu xanh dương Ant Design mặc định */
+    font-size: 24px;
+  }
+  
+  /* Tùy chỉnh màu sắc và kích thước cho các đoạn văn bản */
+  .paragraph {
+    color: #333; /* Màu văn bản mặc định */
+    font-size: 16px;
+    width: 400px;
+
+  }
+  
+  .editBtn{
+    display: flex;
+    justify-content: flex-end;
+  }
