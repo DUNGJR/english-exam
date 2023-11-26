@@ -5,6 +5,7 @@ import  slider2 from "../../assets/slider2.webp"
 import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
 import AdminPage from "../adminpage/AdminPage";
+import TableComponent from "../../components/TableComponent/TableComponent";
 
 
 const HomePage = () => {
@@ -17,7 +18,7 @@ const HomePage = () => {
       
       <SliderComponent arrImages={[slider1,slider2]}></SliderComponent>
       <Content setCurrentId={setCurrentId}></Content>
-      <AdminPage   currentId={currentId} setCurrentId={setCurrentId}  ></AdminPage>
+      <TableComponent   currentId={currentId} setCurrentId={setCurrentId}  ></TableComponent>
       <Footer></Footer>
     </div>
   )

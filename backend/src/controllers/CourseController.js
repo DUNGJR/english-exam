@@ -41,29 +41,6 @@ export const getCourses = async (req, res) => {
   }
 };
 
-// export const updateCourses = async (req, res) => {
-//   try {
-//     const { id } = req.params;
-    
-//     const { name, topic, time, part, question } = req.body;
-//     if (!name || !topic || !time || !part || !question) {
-//       return res.status(400).send({
-//         message: "Send all required",
-//       });
-//     }
-//     const result = await Course.findByIdAndUpdate(id, req.body);
-
-//     if (!result) {
-//       return res.status(404).json({ message: "Course not found" });
-//     }
-
-//     return res.status(200).send({ message: "Course updated successfully" });
-//   } catch (error) {
-//     console.log(error.message);
-//     res.status(500).send({ message: error.message });
-//   }
-// };
-
 export const updateCourses = async (req, res) => {
   try {
     const { id: _id } = req.params;
@@ -72,7 +49,7 @@ export const updateCourses = async (req, res) => {
       return res.status(404).send("No post with that id")
      
   }
-  const updatedCourse = await Course.findByIdAndUpdate(_id,course, {new:true})
+  const updatedCourse = await Course.findByIdAndUpdate(_id,{...course,_id}, {new:true})
   res.json(updatedCourse)
 } catch (error) {
     console.log(error.message);
@@ -80,39 +57,19 @@ export const updateCourses = async (req, res) => {
   }
 };
 
-// Route for Get One Book from database by id
-// router.get("/:id", async (req, res) => {
-//   try {
-//     const { id } = req.params;
 
-//     const course = await Course.findById(id);
+export const deleteCourses = async (req, res) => {
+  try {
+    const { id } = req.params;
 
-//     return res.status(200).json(course);
-//   } catch (error) {
-//     console.log(error.message);
-//     res.status(500).send({ message: error.message });
-//   }
-// });
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).send("No post with that id")
+  }
 
-// Route for Update a Book
-
-
-// Route for Delete a book
-// router.delete("/:id", async (req, res) => {
-//   try {
-//     const { id } = req.params;
-
-//     const result = await Course.findByIdAndDelete(id);
-
-//     if (!result) {
-//       return res.status(404).json({ message: "Course not found" });
-//     }
-
-//     return res.status(200).send({ message: "Course deleted successfully" });
-//   } catch (error) {
-//     console.log(error.message);
-//     res.status(500).send({ message: error.message });
-//   }
-// });
-
-// export default router;
+    await Course.findByIdAndDelete(id);
+    return res.status(200).send({ message: "Course deleted successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
+  }
+};

@@ -3,12 +3,13 @@ import "./content.css";
 import { Button, Flex,Spin  } from "antd";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-
+import { deleteCourse } from "../../actions/posts";
 
 
 const Content = ({ setCurrentId}) => {
   const courses = useSelector((state) => state.posts);
-  console.log(courses)
+  console.log(courses);
+  const dispatch = useDispatch();
   return (
     !courses.length ? <Spin /> :(
 
@@ -30,7 +31,8 @@ const Content = ({ setCurrentId}) => {
               <a href="/exam-reading" className="course_button">
                 <Button type="primary" className="course_button">Vào phòng thi</Button>
               </a>
-              <Button onClick={()=>setCurrentId(course._id)}>update</Button>
+              {/* <Button onClick={()=>setCurrentId(course._id)}>update</Button>
+              <Button onClick={()=>dispatch(deleteCourse(course._id))}>delete</Button> */}
               
             </div>
 
