@@ -63,7 +63,7 @@ const Video = () => {
         </Form>
       </Modal>
       <Layout>
-        <Sider width={400}>
+        <Sider width={200}>
           <Menu
             mode="inline"
             style={{ height: '100%', borderRight: 0 }}

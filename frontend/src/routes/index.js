@@ -9,6 +9,8 @@ import RegisterPage from "../pages/registerpage/RegisterPage";
 import ListenExamPage from "../pages/listenexampage/ListenExamPage";
 import User from "../pages/user/User";
 import EditUser from "../pages/edituser/EditUser";
+import ScorePage from "../pages/score/ScorePage";
+import Video from "../components/video/Video";
 
 export const routes = [
     {
@@ -23,11 +25,21 @@ export const routes = [
         path: '/exam-listen',
         page: ListenExamPage
     },
+    {
+        path: '/score',
+        page: ScorePage
+    },
     
     {
         path: '/course',
         page: CoursePage
     },
+    {
+        path: '/course/detail',
+        page: Video
+    },
+    
+    
     {
         path: '/practice',
         page: PracticePage

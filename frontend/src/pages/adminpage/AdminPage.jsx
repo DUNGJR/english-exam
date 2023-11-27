@@ -43,25 +43,6 @@ const AdminPage = ({ currentId, setCurrentId }) => {
     if (course) setPostData(course);
   }, [course])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (currentId) {
-      dispatch(updateCourse(currentId, postData));
-
-    }
-    else {
-
-      dispatch(createCourse(postData));
-    }
-    clear()
-  }
-
-  const clear = () => {
-    setCurrentId(null);
-    setPostData({ name: '', topic: '', time: '', part: '', question: '' });
-  }
- 
   const items = [
     getItem('Quản lý đề thi','course',<BookOutlined />),
     getItem('Quản lý tài khoản','user',<AuditOutlined />)
@@ -87,9 +68,7 @@ const AdminPage = ({ currentId, setCurrentId }) => {
   }
 
   const [data, setData] = useState([
-    // <>{courses.map((course) =>))}
-    // { id:1, name: 'Product 1', price: 20 },
-    // </>
+
     courses?.length && 
     courses?.map((course) =>
     {
@@ -98,39 +77,11 @@ const AdminPage = ({ currentId, setCurrentId }) => {
     
     
   ]);
-  // console.log(data)
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
 
-  const showModal = () => {
-    form.resetFields();
-    setIsModalVisible(true);
-  };
 
-  const handleOk = () => {
-    form
-      .validateFields()
-      .then((values) => {
-        form.resetFields();
-        setIsModalVisible(false);
-        // Add new product to data
-        setData([...data, { id: data.length + 1, ...values }]);
-      })
-      .catch((info) => {
-        console.log('Validate Failed:', info);
-      });
-  };
-
-  const handleCancel = () => {
-    form.resetFields();
-    setIsModalVisible(false);
-  };
-
-  const handleDelete = (id) => {
-    // Remove product with the given id
-    setData(data.filter((item) => item.id !== id));
-  };
 
   const handleOnClick = ({key}) => {
     console.log('OnClick', key);

@@ -14,9 +14,10 @@ const AdminCourse = () => {
 
     return (
         <div>
-            
-      <TableComponent  currentId={currentId} setCurrentId={setCurrentId}  ></TableComponent>
-        </div>
+            {courses.map((course) => (
+      <TableComponent course={course} currentId={currentId} setCurrentId={setCurrentId}  ></TableComponent>
+       ))} 
+      </div>
     )
 }
 export default AdminCourse

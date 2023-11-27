@@ -25,70 +25,65 @@ const formItemLayout = {
 };
 
 
-const TableComponent = ({ currentId, setCurrentId }) => {
+const TableComponent = ({course, currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({ name: '', topic: '', time: '', part: '', question: '' })
-  const course = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+  // const [postDataDetail, setPostDatail] = useState({ name: '', topic: '', time: '', part: '', question: '' })
+
+  const courseaa = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
   const courses = useSelector((state) => state.posts);
   // console.log(courses);
-
-
+  
+  // course = course +1;
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
-    if (course) setPostData(course);
-  }, [course])
-
+    if (courseaa) setPostData(courseaa);
+  }, [courseaa])
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     if (currentId) {
       dispatch(updateCourse(currentId, postData));
-
+      
     }
     else {
-
+      
       dispatch(createCourse(postData));
     }
+    console.log(currentId)
     clear()
   }
-
+  
   const clear = () => {
     setCurrentId(null);
     setPostData({ name: '', topic: '', time: '', part: '', question: '' });
   }
 
-
-
-
-
+  
   const [data, setData] = [
-    // <>{courses.map((course) =>))}
-    // { id:1, name: 'Product 1', price: 20 },
-    // </>
-
     courses?.length &&
     courses?.map((course) => {
       return { ...course, key: course._id };
     })
-
-
   ];
-  console.log(data)
-
+  
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loading,setLoading]= useState(false)
+  const [rowSelected,setRowSelected] = useState('');
   const [form] = Form.useForm();
-
+  
   const showModal = () => {
     form.resetFields();
     setIsModalVisible(true);
   };
-
+  
   const handleOk = () => {
     form
-      .validateFields()
-      .then((values) => {
-        form.resetFields();
-        setIsModalVisible(false);
+    .validateFields()
+    .then((values) => {
+      form.resetFields();
+      setIsModalVisible(false);
         // Add new product to data
         setData([...data, { id: data.length + 1, ...values }]);
       })
@@ -101,12 +96,17 @@ const TableComponent = ({ currentId, setCurrentId }) => {
     form.resetFields();
     setIsModalVisible(false);
   };
+  
 
-  const handleDelete = (id) => {
-    // Remove product with the given id
-    setData(data.filter((item) => item.id !== id));
-  };
+  const handleEdit = () => {
+    form.resetFields();
+    // console.log("row",rowSelected)
+   
+    setCurrentId(course._id)
+    setIsModalVisible(true);
+  }
 
+  
 
   const columns = [
     // { title: 'ID', dataIndex: 'id', key: 'id' },
@@ -120,12 +120,12 @@ const TableComponent = ({ currentId, setCurrentId }) => {
       key: 'action',
       render: (text, record) => (
         <span>
-          {courses.map((course) => (
-            <Button icon={<EditOutlined />} onClick={() => setCurrentId(course._id)}>
+        
+            <Button icon={<EditOutlined />}   onClick={handleEdit}>
               Edit
             </Button>
-          ))}
-            {courses.map((course) => (
+            {/* {courses.map((course) => ( */}
+          
           <Popconfirm
             title="Are you sure delete this product?"
             onConfirm={() => dispatch(deleteCourse(course._id))}
@@ -136,16 +136,19 @@ const TableComponent = ({ currentId, setCurrentId }) => {
               Delete
             </Button>
           </Popconfirm>
-            ))}
+            {/* // ))} */}
         </span>
       ),
     },
   ];
+
+  
   return (
     <div>
       <Button type="primary" icon={<PlusOutlined />} onClick={showModal}>
         Add Product
       </Button>
+      
       <Table dataSource={data} columns={columns} rowKey="id" />
 
       <Modal

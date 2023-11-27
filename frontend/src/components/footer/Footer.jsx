@@ -7,20 +7,6 @@ const Footer = () => {
     <div class="grid">
         <div class="grid__row">
             <div class="grid__column-2-4">
-                <h3 class="footer__heading">Chăm sóc khách hàng</h3>
-                <ul class="footer-list">
-                    <li class="footer-item">
-                        <a href="" class="footer-item__link">Trung tâm trợ giúp</a>
-                    </li>
-                    <li class="footer-item">
-                        <a href="" class="footer-item__link">LD Shop Mail</a>
-                    </li>
-                    <li class="footer-item">
-                        <a href="" class="footer-item__link">Hướng dẫn mua hàng</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="grid__column-2-4">
                 <h3 class="footer__heading">Về chúng tôi</h3>
                 <ul class="footer-list">
                     <li class="footer-item">
@@ -31,6 +17,14 @@ const Footer = () => {
                     </li>
                     <li class="footer-item">
                         <a href="" class="footer-item__link">Điều khoản</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="grid__column-2-4">
+                <h3 class="footer__heading">LIÊN HỆ </h3>
+                <ul class="footer-list">
+                    <li class="footer-item">
+                        <h3 href="" class="footer-item__link">090909090909</h3>
                     </li>
                 </ul>
             </div>
@@ -74,12 +68,6 @@ const Footer = () => {
                     <li class="footer-item">
                         <a href="" class="footer-item__link">Trung tâm trợ giúp</a>
                     </li>
-                    <li class="footer-item">
-                        <a href="" class="footer-item__link">LD Shop Mail</a>
-                    </li>
-                    <li class="footer-item">
-                        <a href="" class="footer-item__link">Hướng dẫn mua hàng</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -87,7 +75,7 @@ const Footer = () => {
     </div>
     <div class="footer__bottom">
         <div class="grid">
-                <p class="footer__text">© 2023 - Bản quyền thuộc về LD SHOP</p>
+                <p class="footer__text">© 2023 - By LD</p>
         </div>
     </div>
   </footer>
