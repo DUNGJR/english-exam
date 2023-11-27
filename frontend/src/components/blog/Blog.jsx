@@ -18,25 +18,6 @@ const articleData = [
     image: "https://i.redd.it/nhk8jg3psng71.jpg"
   }, 
   
-  {
-    title: "Cách viết CV xin việc bằng tiếng Anh mới nhất (2023)",
-    description: "Cách nào để viết CV xin việc bằng tiếng Anh ấn tượng với nhà tuyển dụng? Hãy cùng STUDY4 tìm hiểu cách viết CV tiếng Anh ngay dưới đây.",
-    image: "https://i.redd.it/nhk8jg3psng71.jpg"
-  }, 
-  
-  {
-    title: "Cách viết CV xin việc bằng tiếng Anh mới nhất (2023)",
-    description: "Cách nào để viết CV xin việc bằng tiếng Anh ấn tượng với nhà tuyển dụng? Hãy cùng STUDY4 tìm hiểu cách viết CV tiếng Anh ngay dưới đây.",
-    image: "https://i.redd.it/nhk8jg3psng71.jpg"
-  }, 
-  
-  {
-    title: "Cách viết CV xin việc bằng tiếng Anh mới nhất (2023)",
-    description: "Cách nào để viết CV xin việc bằng tiếng Anh ấn tượng với nhà tuyển dụng? Hãy cùng STUDY4 tìm hiểu cách viết CV tiếng Anh ngay dưới đây.",
-    image: "https://i.redd.it/nhk8jg3psng71.jpg"
-  },
-
-
   
 ];
 
@@ -56,21 +37,13 @@ const App = () => (
           <Menu.SubMenu key="sub1" icon={<SoundOutlined />} title="Luyện thi IELTS">
             <Menu.Item key="2">IELTS Listening</Menu.Item>
             <Menu.Item key="3">IELTS Reading</Menu.Item>
-            <Menu.Item key="4">IELTS Speaking</Menu.Item>
-            <Menu.Item key="5">IELTS Writing</Menu.Item>
-            <Menu.Item key="6">IELTS Materials</Menu.Item>
-            <Menu.Item key="7">Thông tin kỳ thi IELTS</Menu.Item>
-            <Menu.Item key="8">Kinh nghiệm thi IELTS</Menu.Item>
+            
           </Menu.SubMenu>
           <Menu.SubMenu key="sub2" icon={<ReadOutlined />} title="Luyện thi TOEIC">
-            <Menu.Item key="9">TOEIC Listening</Menu.Item>
-            <Menu.Item key="10">TOEIC Reading</Menu.Item>
-            <Menu.Item key="11">TOEIC Materials</Menu.Item>
-            <Menu.Item key="12">Thông tin kỳ thi TOEIC</Menu.Item>
+            <Menu.Item key="4">TOEIC Listening</Menu.Item>
+            <Menu.Item key="5">TOEIC Reading</Menu.Item>
           </Menu.SubMenu>
-          <Menu.Item key="13" icon={<AuditOutlined />}>
-            Tiếng Anh cho người đi làm
-          </Menu.Item>
+  
         </Menu>
       </Sider>
       <Layout style={{ padding: '0 24px 24px' }}>

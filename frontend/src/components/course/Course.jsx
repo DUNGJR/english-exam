@@ -33,7 +33,7 @@ const Course = () => {
             </Card>
           </a>
 
-          <a href="/score" className="col-md-3">
+          <a href="/course/detail" className="col-md-3">
             <Card
               style={{
                 width: 300,

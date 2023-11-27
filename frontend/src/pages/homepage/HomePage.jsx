@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
 import AdminPage from "../adminpage/AdminPage";
 import TableComponent from "../../components/TableComponent/TableComponent";
+import CoursePage from "../coursepage/CoursePage";
 
 
 const HomePage = () => {
