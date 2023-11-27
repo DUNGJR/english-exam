@@ -63,30 +63,7 @@ const ScoreCard = () => {
               </Col>
             </Row>
 
-            {/* <div className='score' style={{marginBottom: '10px'}}>
-            <Row gutter={[16, 16]}>
-              <Col span={12}>
-              <div className='shadow'>
-                <Card>
-                  <Badge status="success" text="Listening" />
-                  <p>Score: {data.listeningScore}</p>
-                  <p>Correct Answers: {data.listeningCorrect} out of 100 questions</p>
-                </Card>
-                </div>
-              </Col>
-
-
-              <Col span={12}>
-              <div className='shadow'>
-                <Card>
-                  <Badge status="success" text="Reading" />
-                  <p>Score: {data.readingScore}</p>
-                  <p>Correct Answers: {data.readingCorrect} out of 100 questions</p>
-                </Card>
-                </div>
-              </Col>
-            </Row>
-            </div> */}
+          
             
 
             <div className='detail'>

@@ -11,6 +11,7 @@ import User from "../pages/user/User";
 import EditUser from "../pages/edituser/EditUser";
 import ScorePage from "../pages/score/ScorePage";
 import Video from "../components/video/Video";
+import Result from "../pages/result/Result";
 
 export const routes = [
     {
@@ -24,6 +25,10 @@ export const routes = [
     {
         path: '/exam-listen',
         page: ListenExamPage
+    },
+    {
+        path: '/result',
+        page: Result
     },
     {
         path: '/score',

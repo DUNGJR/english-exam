@@ -3,12 +3,17 @@ import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import CourseRoute from './routes/CourseRoute.js';
 import UserRouter from './routes/UserRouter.js';
+import QuestionRouter from './routes/QuestionRoute.js';
+
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv'
+import morgan from 'morgan'
 
 const app = express();
   
+app.use(morgan('tiny'));
+
 app.use(bodyParser.json());
 
 app.use(express.json());
@@ -22,6 +27,8 @@ app.get('/', (request, response) => {
 
 app.use('/course', CourseRoute);
 app.use('/user', UserRouter);
+app.use('/api', QuestionRouter);
+
 
 // Connect to database
 mongoose

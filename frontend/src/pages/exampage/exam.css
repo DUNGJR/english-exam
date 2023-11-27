@@ -1,0 +1,9 @@
+/* .exam {
+    display: ;
+} */
+.exam_btn {
+    display: flex;
+    justify-content: space-evenly;
+    /* padding: 20px; */
+    margin: 20px;
+}
