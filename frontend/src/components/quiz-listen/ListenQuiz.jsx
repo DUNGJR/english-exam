@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./listenquiz.css";
-import { Slider,Image, Button, Radio, Space, Statistic  } from "antd";
+import { Slider, Image, Button, Radio, Space, Statistic } from "antd";
 import { CaretRightOutlined } from '@ant-design/icons';
 const { Countdown } = Statistic;
 const ListenQuiz = () => {
@@ -19,11 +19,11 @@ const ListenQuiz = () => {
 
           <div className="quiz_left_content">
             <div className="listen">
-            <Button className="play_btn">
-          <CaretRightOutlined style={{fontSize:25}}/></Button>
-          <Slider className="slider"defaultValue={30} />
-          <span>00:00</span>
-          </div>
+              <Button className="play_btn">
+                <CaretRightOutlined style={{ fontSize: 25 }} /></Button>
+              <Slider className="slider" defaultValue={30} />
+              <span>00:00</span>
+            </div>
 
             <Image
               width={200}

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const courseSchema = mongoose.Schema(
   {
@@ -7,25 +7,25 @@ const courseSchema = mongoose.Schema(
       required: true,
     },
     topic: {
-        type: String,
+      type: String,
       required: true,
     },
     time: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
     part: {
-        type: Number,
+      type: Number,
       required: true,
     },
     question: {
       type: Number,
-    required: true,
-  },
+      required: true,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-export const Course = mongoose.model('Course', courseSchema);
+export const Course = mongoose.model("Course", courseSchema);

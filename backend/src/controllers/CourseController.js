@@ -13,10 +13,10 @@ export const postCourses = async (req, res) => {
     }
     const newCourse = {
       name: name,
-      topic:topic,
-      time:time,
-      part:part,
-      question:question,
+      topic: topic,
+      time: time,
+      part: part,
+      question: question,
     };
 
     const course = await Course.create(newCourse);
@@ -33,8 +33,7 @@ export const getCourses = async (req, res) => {
   try {
     const course = await Course.find({});
 
-    return res.status(200).json(
-    course);
+    return res.status(200).json(course);
   } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
@@ -45,26 +44,28 @@ export const updateCourses = async (req, res) => {
   try {
     const { id: _id } = req.params;
     const course = req.body;
-    if(!mongoose.Types.ObjectId.isValid(_id)) {
-      return res.status(404).send("No post with that id")
-     
-  }
-  const updatedCourse = await Course.findByIdAndUpdate(_id,{...course,_id}, {new:true})
-  res.json(updatedCourse)
-} catch (error) {
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+      return res.status(404).send("No post with that id");
+    }
+    const updatedCourse = await Course.findByIdAndUpdate(
+      _id,
+      { ...course, _id },
+      { new: true }
+    );
+    res.json(updatedCourse);
+  } catch (error) {
     console.log(error.message);
     res.status(500).send({ message: error.message });
   }
 };
 
-
 export const deleteCourses = async (req, res) => {
   try {
     const { id } = req.params;
 
-    if(!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).send("No post with that id")
-  }
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).send("No post with that id");
+    }
 
     await Course.findByIdAndDelete(id);
     return res.status(200).send({ message: "Course deleted successfully" });

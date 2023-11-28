@@ -8,7 +8,6 @@ import { getCourse } from "./actions/posts.js";
 
 import { useDispatch, useSelector } from "react-redux";
 
-
 const App = () => {
   // const courses = useSelector((state) => state.posts);
   // console.log(course);
@@ -17,24 +16,28 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getCourse());
-  },[currentId,dispatch]);
+  }, [currentId, dispatch]);
 
   return (
     <div className="App">
       <Navbar></Navbar>
       <Router>
         <Routes>
-        
           {routes.map((route) => {
             const Page = route.page;
             return (
-              <Route key={route.path} path={route.path} element={<Page   currentId={currentId} setCurrentId={setCurrentId}  />}></Route>
-            )})}
-
+              <Route
+                key={route.path}
+                path={route.path}
+                element={
+                  <Page currentId={currentId} setCurrentId={setCurrentId} />
+                }
+              ></Route>
+            );
+          })}
         </Routes>
       </Router>
     </div>
   );
 };
 export default App;
-

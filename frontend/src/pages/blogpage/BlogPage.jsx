@@ -1,4 +1,4 @@
-import { Blog,Footer } from "../../components"
+import { Blog, Footer } from "../../components"
 
 
 const CoursePage = () => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import { deleteCourse } from "../../actions/posts";
 
-import { Layout, Menu, Input, Card, Col, Row, Divider, Button, message, Upload, Table, Modal, Form, Popconfirm,Spin } from "antd";
+import { Layout, Menu, Input, Card, Col, Row, Divider, Button, message, Upload, Table, Modal, Form, Popconfirm, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { createCourse, updateCourse } from "../../actions/posts";
 import "./adminpage.css";
@@ -13,19 +13,12 @@ import AdminCourse from "../../components/admincourse/AdminCourse"
 const { Header, Content, Sider } = Layout;
 const { Search } = Input;
 const { Meta } = Card;
-const props = {
-  name: 'file',
-  action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
-  headers: {
-    authorization: 'authorization-text',
-  },
-};
 
 
 
-function getItem(label,key,icon,children,type) {
+function getItem(label, key, icon, children, type) {
   return {
-    label,key,icon,children,type
+    label, key, icon, children, type
   };
 };
 
@@ -36,7 +29,7 @@ const AdminPage = ({ currentId, setCurrentId }) => {
   const courses = useSelector((state) => state.posts);
   // console.log(courses);
 
-  
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,50 +37,38 @@ const AdminPage = ({ currentId, setCurrentId }) => {
   }, [course])
 
   const items = [
-    getItem('Quản lý đề thi','course',<BookOutlined />),
-    getItem('Quản lý tài khoản','user',<AuditOutlined />)
-
+    getItem('Quản lý đề thi', 'course', <BookOutlined />),
+    getItem('Quản lý tài khoản', 'user', <AuditOutlined />)
   ]
-
-  const [keySelected, setKeySelected ] = useState('')
-
+  const [keySelected, setKeySelected] = useState('course')
   const renderPage = (key) => {
     switch (key) {
-    case 'user': 
-    return (
-      <AdminUser></AdminUser>
-    )
-    case 'course': 
-    return (
-      <AdminCourse></AdminCourse>
-    )
-
-    default:
-      return <></>
+      case 'user':
+        return (
+          <AdminUser></AdminUser>
+        )
+      case 'course':
+        return (
+          <AdminCourse></AdminCourse>
+        )
+      default:
+        return <></>
     }
   }
 
   const [data, setData] = useState([
 
-    courses?.length && 
-    courses?.map((course) =>
-    {
-      return {...course, key: course._id};
+    courses?.length &&
+    courses?.map((course) => {
+      return { ...course, key: course._id };
     })
-    
-    
+
+
   ]);
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [form] = Form.useForm();
-
-
-
-  const handleOnClick = ({key}) => {
+  const handleOnClick = ({ key }) => {
     console.log('OnClick', key);
     setKeySelected(key);
   }
-
 
   return (
     <div>
@@ -95,7 +76,7 @@ const AdminPage = ({ currentId, setCurrentId }) => {
         <Sider width={200} className="site-layout-background">
           <Menu
             mode="inline"
-            defaultSelectedKeys={["user"]}
+            defaultSelectedKeys={["course"]}
             items={items}
             // defaultOpenKeys={["sub1", "sub2"]}
             style={{ height: "100%", borderRight: 0 }}
@@ -104,12 +85,9 @@ const AdminPage = ({ currentId, setCurrentId }) => {
           </Menu>
         </Sider>
         <Layout style={{ padding: "0 24px 24px" }}>
-            {renderPage(keySelected)}
-          {/* <Upload {...props}>
-            <Button icon={<UploadOutlined />}>Click to Upload</Button>
-          </Upload> */}
-        </Layout>
+          {renderPage(keySelected)}
 
+        </Layout>
       </Layout>
     </div>
   );

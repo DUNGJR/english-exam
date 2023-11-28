@@ -1,4 +1,4 @@
-import { Footer,Course,Video } from "../../components"
+import { Footer, Course, Video } from "../../components"
 
 const CoursePage = () => {
   return (

@@ -41,15 +41,15 @@ const ExamPage = () => {
   function onChecked(check) {
     setChecked(check)
   }
-  if(result.length && result.length >= queue.length){
+  if (result.length && result.length >= queue.length) {
     return <Navigate to={'/result'} replace={true}></Navigate>
-}
+  }
   return (
     <div className="exam">
 
       <Quiz onChecked={onChecked}></Quiz>
       <div className='exam_btn'>
-        { trace > 0 ? <Button className='btn prev' onClick={onPrev}>Prev</Button> : <div></div>}
+        {trace > 0 ? <Button className='btn prev' onClick={onPrev}>Prev</Button> : <div></div>}
         <Button className='btn next' onClick={onNext}>Next</Button>
       </div>
     </div>

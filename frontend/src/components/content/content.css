@@ -1,33 +1,42 @@
 .content {
-    margin: 50px 0;
+  margin-top: 20px;
 }
 
 .course_list {
-    /* margin: 20px; */
-    width: 100%;
-    padding: 20px;
-    display: inline-block;
-    
+  /* margin: 20px; */
+  width: 100%;
+  padding: 20px;
+  display: inline-block;
 }
 .card {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px #ccc;
-    padding: 20px;
-    /* height: 100%; */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #ccc;
+  padding: 20px;
+  /* height: 100%; */
 }
 
-.card p{
-    margin-bottom: 5px;
+.card p {
+  margin-bottom: 5px;
+  color: #677788;
 }
 
 .course_title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  /* text-size: 50px; */
+  font-size: 30px;
+}
+
+.course_name {
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .course_button {
-    width: 100%;
+  width: 100%;
+  background-color: #163e6a;
+  color: #fff;
 }

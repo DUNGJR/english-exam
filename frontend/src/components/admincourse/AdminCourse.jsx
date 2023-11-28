@@ -12,12 +12,12 @@ const AdminCourse = () => {
   const [currentId, setCurrentId] = useState(null);
   const courses = useSelector((state) => state.posts);
 
-    return (
-        <div>
-            {courses.map((course) => (
-      <TableComponent course={course} currentId={currentId} setCurrentId={setCurrentId}  ></TableComponent>
-       ))} 
-      </div>
-    )
+  return (
+    <div>
+      {courses.map((course) => (
+        <TableComponent course={course} currentId={currentId} setCurrentId={setCurrentId}  ></TableComponent>
+      ))}
+    </div>
+  )
 }
 export default AdminCourse

@@ -13,7 +13,7 @@ const { RangePicker } = DatePicker;
 
 
 function EditUserProfile() {
-  const [avatar, setAvatar] = useState(null); 
+  const [avatar, setAvatar] = useState(null);
 
 
   const [userData, setUserData] = useState({
@@ -25,7 +25,7 @@ function EditUserProfile() {
   });
 
 
-  
+
   const handleInputChange = (fieldName, value) => {
     setUserData({
       ...userData,
@@ -47,53 +47,53 @@ function EditUserProfile() {
             This is your user profile page. You can customize it as needed.
           </Paragraph>
           <Form onFinish={handleSubmit}>
-          <Item label="Avatar" name="avatar">
-  <Upload
-    name="avatar"
-    listType="picture-card"
-    className="avatar-uploader"
-    showUploadList={false}
-    beforeUpload={(file) => {
-      // Kiểm tra và giới hạn loại file hình ảnh
-      const isImage = file.type.startsWith('image/');
-      if (!isImage) {
-        message.error('You can only upload image files!');
-      }
-      const isLt2M = file.size / 1024 / 1024 < 2; // Giới hạn kích thước file dưới 2MB
-      if (!isLt2M) {
-        message.error('Image must be smaller than 2MB!');
-      }
-      if (isImage && isLt2M) {
-        setAvatar(file);
-      }
-      return false;
-    }}
-  >
-    {avatar ? (
-      <img src={URL.createObjectURL(avatar)} alt="Avatar" style={{ width: '100%', height: '100%'}} />
-    ) : (
-      <div>
-        <UploadOutlined />
-        <div className="ant-upload-text">Upload</div>
-      </div>
-    )}
-  </Upload>
-</Item>
-    
-        <Row>
+            <Item label="Avatar" name="avatar">
+              <Upload
+                name="avatar"
+                listType="picture-card"
+                className="avatar-uploader"
+                showUploadList={false}
+                beforeUpload={(file) => {
+                  // Kiểm tra và giới hạn loại file hình ảnh
+                  const isImage = file.type.startsWith('image/');
+                  if (!isImage) {
+                    message.error('You can only upload image files!');
+                  }
+                  const isLt2M = file.size / 1024 / 1024 < 2; // Giới hạn kích thước file dưới 2MB
+                  if (!isLt2M) {
+                    message.error('Image must be smaller than 2MB!');
+                  }
+                  if (isImage && isLt2M) {
+                    setAvatar(file);
+                  }
+                  return false;
+                }}
+              >
+                {avatar ? (
+                  <img src={URL.createObjectURL(avatar)} alt="Avatar" style={{ width: '100%', height: '100%' }} />
+                ) : (
+                  <div>
+                    <UploadOutlined />
+                    <div className="ant-upload-text">Upload</div>
+                  </div>
+                )}
+              </Upload>
+            </Item>
 
-        <Col className="gutter-row" span={24}>     
+            <Row>
+
+              <Col className="gutter-row" span={24}>
                 <Item label="Name" name="name" rules={[{ required: true, message: 'Please enter your name' }]}>
-                    <Input value={userData.name} style = {{width:150,}} onChange={(e) => handleInputChange('name', e.target.value)} />
-                </Item>       
-        </Col>
-
-        <Col className="gutter-row" span={24}>
-                <Item label="Age" name="age" rules={[{ required: true, message: 'Please enter your age' }]}>
-                    <Input type="number" style = {{width:150,}}  value={userData.age} onChange={(e) => handleInputChange('age', e.target.value)} />
+                  <Input value={userData.name} style={{ width: 150, }} onChange={(e) => handleInputChange('name', e.target.value)} />
                 </Item>
-            </Col> 
-        </Row>
+              </Col>
+
+              <Col className="gutter-row" span={24}>
+                <Item label="Age" name="age" rules={[{ required: true, message: 'Please enter your age' }]}>
+                  <Input type="number" style={{ width: 150, }} value={userData.age} onChange={(e) => handleInputChange('age', e.target.value)} />
+                </Item>
+              </Col>
+            </Row>
             <Item label="Date of Birth" name="dob">
               <DatePicker value={userData.dob} onChange={(dates) => handleInputChange('dob', dates)} />
             </Item>
@@ -105,7 +105,7 @@ function EditUserProfile() {
                 <Radio value="other">Other</Radio>
               </Radio.Group>
             </Item>
-            
+
             <Item label="Bio" name="bio">
               <TextArea
                 value={userData.bio}

@@ -35,4 +35,3 @@ export const deleteCourse = (id) => async (dispatch) => {
     console.log(error);
   }
 };
-

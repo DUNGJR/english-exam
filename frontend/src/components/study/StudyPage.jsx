@@ -8,9 +8,9 @@ const Video = () => {
   const [currentTitle, setCurrentTitle] = useState('');
   const [currentDescription, setCurrentDescription] = useState('');
   const [videoList, setVideoList] = useState([
-    { title: 'Video 1 Cách để đạt 600 toeic trong vòng 1 tháng', url: 'https://www.youtube.com/embed/hCsxrEYR7yI?si=U231c2ZT84qXEGsu', description: 'Description for Video 1'},
-    { title: 'Video 2', url: 'https://www.youtube.com/embed/fJ9rUzIMcZQ?si=nUuz7zxVdnTGLEft', description: 'Sungha http://www.sunghajung.com arranged and played “Bohemian Rhapsody” from Queen Tuning : Half-step Down 2 Capo'},
-    { title: 'Video 3', url: 'https://www.youtube.com/embed/U8CjKwYz_Vs?si=ho0mjw158lrVTNTt'},
+    { title: 'Bài học 1:', url: 'https://www.youtube.com/embed/MwLB1u-4ogw?si=8NtVkfLE5SJSLQSX', description: 'TỰ HỌC TOEIC READING MỤC TIÊU 500 TOEIC: Unit 1| Ms Hoa TOEIC' },
+    { title: 'Bài học 2:', url: 'https://www.youtube.com/embed/1JFTaaatqVo?si=e1thRomd83mqCojR', description: 'TỰ HỌC TOEIC READING MỤC TIÊU 500 TOEIC: Unit 2| Ms Hoa TOEIC' },
+    { title: 'Bài học 3:', url: 'https://www.youtube.com/embed/q_6oYvTkDJI?si=79ILWI5jFStehPrM', description: 'TỰ HỌC TOEIC READING MỤC TIÊU 500 TOEIC: Unit 2| Ms Hoa TOEIC' },
   ]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
@@ -48,7 +48,7 @@ const Video = () => {
       <Header style={{ color: 'white', textAlign: 'center', fontSize: '20px' }}>
         Video Viewer
       </Header>
-     
+
       <Modal title="Add New Video" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <Form form={form} layout="vertical">
           <Form.Item name="title" label="Title" rules={[{ required: true, message: 'Please input the title!' }]}>
@@ -97,9 +97,9 @@ const Video = () => {
           </Content>
         </Layout>
       </Layout>
-      <Button type="primary" onClick={showModal} style={{ margin: '10px' }}>
+      {/* <Button type="primary" onClick={showModal} style={{ margin: '10px' }}>
         Add Video
-      </Button>
+      </Button> */}
     </Layout>
   );
 };

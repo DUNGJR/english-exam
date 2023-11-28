@@ -10,67 +10,66 @@ import ListenExamPage from "../pages/listenexampage/ListenExamPage";
 import User from "../pages/user/User";
 import EditUser from "../pages/edituser/EditUser";
 import ScorePage from "../pages/score/ScorePage";
-import Video from "../components/video/Video";
+import StudyPage from "../components/study/StudyPage";
 import Result from "../pages/result/Result";
 
 export const routes = [
-    {
-        path: '/',
-        page: HomePage
-    },
-    {
-        path: '/exam-reading',
-        page: ExamPage
-    },
-    {
-        path: '/exam-listen',
-        page: ListenExamPage
-    },
-    {
-        path: '/result',
-        page: Result
-    },
-    {
-        path: '/score',
-        page: ScorePage
-    },
-    
-    {
-        path: '/course',
-        page: CoursePage
-    },
-    {
-        path: '/course/detail',
-        page: Video
-    },
-    
-    
-    {
-        path: '/practice',
-        page: PracticePage
-    },
-    {
-        path: '/blog',
-        page: BlogPage
-    },
-    {
-        path: '/login',
-        page: LoginPage
-    },
-    {
-        path: '/register',
-        page: RegisterPage
-    },
-    {
-        path: '/user',
-        page: User
-    },
-    {
-        path: '/edituser',
-        page: EditUser
-    },
-    {
-        path: '/admin',
-        page: AdminPage
-    }
-]
+  {
+    path: "/",
+    page: HomePage,
+  },
+  {
+    path: "/exam-reading",
+    page: ExamPage,
+  },
+  {
+    path: "/exam-listen",
+    page: ListenExamPage,
+  },
+  {
+    path: "/result",
+    page: Result,
+  },
+  {
+    path: "/score",
+    page: ScorePage,
+  },
+
+  {
+    path: "/course",
+    page: CoursePage,
+  },
+  {
+    path: "/course/detail",
+    page: StudyPage,
+  },
+
+  {
+    path: "/practice",
+    page: PracticePage,
+  },
+  {
+    path: "/blog",
+    page: BlogPage,
+  },
+  {
+    path: "/login",
+    page: LoginPage,
+  },
+  {
+    path: "/register",
+    page: RegisterPage,
+  },
+  {
+    path: "/user",
+    page: User,
+  },
+  {
+    path: "/edituser",
+    page: EditUser,
+  },
+  {
+    path: "/admin",
+    page: AdminPage,
+  },
+];

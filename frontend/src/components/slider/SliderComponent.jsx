@@ -13,11 +13,11 @@ const SliderComponent = ({ arrImages }) => {
   };
   return (
     <div class="grid">
-    <Slider {...settings}>
-      {arrImages.map((image) => {
-        return <Image src={image} alt="slider" width="100%" height="274px" preview={false}></Image>;
-      })}
-    </Slider>
+      <Slider {...settings}>
+        {arrImages.map((image) => {
+          return <Image src={image} alt="slider" width="100%" height="274px" preview={false}></Image>;
+        })}
+      </Slider>
     </div>
   );
 };
