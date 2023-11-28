@@ -72,18 +72,16 @@ const Quiz = ({ onChecked }) => {
 
           </div>
 
-
-
         </div>
         <div className="quiz_right">
           <p>Thời gian còn lại</p>
           {/* <span>00:00</span> */}
-          <Countdown title="" value={Date.now() + 600 * 1000} onChange={onChange} />
+          <Countdown className="countdown" title="" value={Date.now() + 600 * 1000} onChange={onChange} />
 
-          <a href="/result">
+          {/* <a href="/result">
             <Button className="nopbai_btn" type="primary" block>
               NỘP BÀI
-            </Button> </a>
+            </Button> </a> */}
           <p className="quiz_right_title">BẢNG CÂU HỎI</p>
           <Button className="question_btn" shape="circle">
             1
