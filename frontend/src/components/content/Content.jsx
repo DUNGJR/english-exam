@@ -41,7 +41,7 @@ const Content = ({ setCurrentId }) => {
 
 
 
-            {/* <div className="course_list col-md-3">
+            <div className="course_list col-md-3">
               <div className="card">
                 <p className="course_name">Đề Listening Part 1</p>
                 <p className="course_topic">TOEIC</p>
@@ -51,7 +51,7 @@ const Content = ({ setCurrentId }) => {
                 <p className="course_detail">1 phần, 6 câu hỏi</p>
                 <a href="/exam-listen" className="course_button"><Button type="primary" className="course_button">Vào phòng thi</Button></a>
               </div>
-            </div> */}
+            </div>
 
           </div>
         </div>
