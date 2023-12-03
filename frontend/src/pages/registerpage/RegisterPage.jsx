@@ -10,25 +10,6 @@ const [name, setName] = useState('')
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 
-// async function register(event) {
-//   event.preventDefault()
-//   const response = await fetch('http://localhost:3001/register', {
-//     method:'POST',
-//     headers:{
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       name,
-//       email,
-//       password,
-//     }),
-//   })
-//   if (response.status === 200){
-//     alert('register Succes')
-//   } else {
-//     alert('register Fail')
-//   }
-// }
 
 async function registerUser(event) {
   event.preventDefault();

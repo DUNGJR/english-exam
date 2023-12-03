@@ -29,7 +29,6 @@ app.get("/", (request, response) => {
 });
 
 app.use("/course", CourseRoute);
-app.use("/user", UserRouter);
 app.use("/api", QuestionRouter);
 
 // Connect to database
@@ -54,13 +53,49 @@ mongoose
           await UserModel.create({
             name: req.body.name,
             email:req.body.email,
-            password: bcrypt.hashSync(req.body.password, salt)
+            password: bcrypt.hashSync(req.body.password, salt),
+            age: req.body.age || null,        
+            bio: req.body.bio || '',         
+            dob: req.body.dob || null,   
+            gender: req.body.gender || '', 
+            avata: req.body.avata || '',
           })
           res.json({status: 'ok'})
         } catch (error) {
           res.json({status: 'error',error})
         }
   })
+
+
+  app.post('/edituser', async (req, res) => {
+    const userEmail = req.body.email;
+
+    try {
+        const updatedUser = await UserModel.findOneAndUpdate(
+            { email: userEmail },
+            {
+                $set: {
+                    name: req.body.name,
+                    email: req.body.email,
+                    age: req.body.age !== null ? req.body.age : null,
+                    dob: req.body.dob !== null ? new Date(req.body.dob) : null,
+                    gender: req.body.gender || '',
+                    bio: req.body.bio || '',
+                    avata: req.body.avata || '',
+                },
+            },
+            { new: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ status: 'error', message: 'User not found' });
+        }
+
+        res.json({ status: 'ok', user: updatedUser });
+    } catch (error) {
+        res.status(500).json({ status: 'error', error: error.message });
+    }
+});
   
   app.post('/login', async (req, res) => {
     try {
@@ -73,9 +108,14 @@ mongoose
                 const token = jwt.sign({
                     name: user.name,
                     email: user.email,
+                    age: user.age !== null ? req.body.age : null,
+                    dob: user.dob !== null ? new Date(req.body.dob) : null,
+                    gender: user.gender || '',
+                    bio: user.bio || '',
+                    avata: user.avata || '', 
                 }, 'secret123');
   
-                return res.json({ status: 'ok', user: token });
+                return res.json({ status: 'ok', user: token});
             } else {
                 return res.json({ status: 'error', user: false, message: 'Mật khẩu không đúng' });
             }
@@ -88,20 +128,31 @@ mongoose
   });
   
   
-  app.get('/user', async (req, res) => {
+  app.get('/users', async (req, res) => {
     try {
-      // Lấy dữ liệu từ MongoDB
-      const userData = await UserModel.findOne({email});
+      // Lấy token từ tiêu đề Authorization
+      const token = req.headers.authorization?.split(' ')[1];
+      
+      if (!token) {
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+      // Giải mã token để lấy thông tin người dùng
+      const decodedToken = jwt.verify(token, 'secret123'); // Thay thế 'your-secret-key' bằng secret key bạn đã sử dụng khi tạo token
+      // Sử dụng thông tin người dùng để truy vấn cơ sở dữ liệu
+      const userData = await UserModel.findOne({ email: decodedToken.email });
       if (!userData) {
         return res.status(404).json({ message: 'Không tìm thấy người dùng' });
       }
+  
       // Trả về dữ liệu người dùng (bao gồm name, email, và password)
-      const { name, email, password } = userData;
-      res.json({ name, email, password });
+      const { name, email, password, age, dob, gender, bio, avata} = userData;
+      res.json({ name, email, password, age, dob, gender, bio, avata});
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Lỗi trong quá trình lấy dữ liệu' });
+      if (error.name === 'JsonWebTokenError') {
+        return res.status(401).json({ message: 'Invalid token' });
+      }
+      res.status(500).json({ message: 'Lỗi Rồi ' });
     }
   });
-  
   

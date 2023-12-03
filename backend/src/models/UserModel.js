@@ -14,27 +14,21 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    // phone: {
-    //   type: Number,
-    //   required: true,
-    // },
-    // cpassword: {
-    //   type: String,
-    //   required: true,
-    // },
-    // isAdmin: {
-    //   type: Boolean,
-    //   default: false,
-    //   required: true,
-    // },
-    // access_token: {
-    //   type: String,
-    //   required: true,
-    // },
-    // refresh_token: {
-    //   type: String,
-    //   required: true,
-    // },
+    age: {
+      type: Number,
+    },
+    dob: {
+      type: Date,
+    },
+    gender: {
+      type: String,
+    },
+    bio: {
+      type: String,
+    },
+    avata: {
+      type: String
+    }
   },
   {
     timestamps: true,
