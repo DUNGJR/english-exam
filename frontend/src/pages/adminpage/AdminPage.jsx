@@ -9,7 +9,7 @@ import "./adminpage.css";
 import { BookOutlined, AuditOutlined, ReadOutlined, SoundOutlined, UploadOutlined, EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import AdminUser from "../../components/adminuser/AdminUser"
 import AdminCourse from "../../components/admincourse/AdminCourse"
-import addCourse from "../../components/course/addCourse"
+import AddCourse from "../../components/course/AddCourse"
 const { Header, Content, Sider } = Layout;
 const { Search } = Input;
 const { Meta } = Card;
@@ -55,7 +55,7 @@ const AdminPage = ({ currentId, setCurrentId }) => {
         )
         case 'course':
           return (
-            <addCourse></addCourse>
+            <AddCourse></AddCourse>
           )
       default:
         return <></>

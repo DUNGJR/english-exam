@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./course.css";
 import { Button, Card, Avatar } from "antd";
 import { useNavigate } from 'react-router-dom';
-import AddCourse from "../../components/course/addCourse";
 const { Meta } = Card;
 
 const Course = () => {
@@ -48,8 +47,6 @@ const Course = () => {
               />
             </Card>
           </a>
-
-          
           {/* Thêm thẻ Card và các nút Add Video khác ở đây */}
 
         </div>
