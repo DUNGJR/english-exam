@@ -25,65 +25,62 @@ const formItemLayout = {
 };
 
 
-const TableComponent = ({course, currentId, setCurrentId }) => {
+const TableComponent = (props) => {
+  const {courses = [], currentId, setCurrentId} = props;
+  console.log(props)
   const [postData, setPostData] = useState({ name: '', topic: '', time: '', part: '', question: '' })
   // const [postDataDetail, setPostDatail] = useState({ name: '', topic: '', time: '', part: '', question: '' })
 
   const courseaa = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
-  const courses = useSelector((state) => state.posts);
-  // console.log(courses);
-  
-  // course = course +1;
+  // const courses = useSelector((state) => state.posts);
+
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     if (courseaa) setPostData(courseaa);
   }, [courseaa])
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (currentId) {
       dispatch(updateCourse(currentId, postData));
-      
     }
     else {
-      
       dispatch(createCourse(postData));
     }
     console.log(currentId)
     clear()
   }
-  
+
   const clear = () => {
     setCurrentId(null);
     setPostData({ name: '', topic: '', time: '', part: '', question: '' });
   }
 
-  
+
   const [data, setData] = [
     courses?.length &&
     courses?.map((course) => {
       return { ...course, key: course._id };
     })
   ];
-  
+
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [loading,setLoading]= useState(false)
-  const [rowSelected,setRowSelected] = useState('');
+  const [loading, setLoading] = useState(false)
+  const [rowSelected, setRowSelected] = useState('');
   const [form] = Form.useForm();
-  
+
   const showModal = () => {
-    form.resetFields();
     setIsModalVisible(true);
   };
-  
+
   const handleOk = () => {
     form
-    .validateFields()
-    .then((values) => {
-      form.resetFields();
-      setIsModalVisible(false);
+      .validateFields()
+      .then((values) => {
+        form.resetFields();
+        setIsModalVisible(false);
         // Add new product to data
         setData([...data, { id: data.length + 1, ...values }]);
       })
@@ -93,20 +90,15 @@ const TableComponent = ({course, currentId, setCurrentId }) => {
   };
 
   const handleCancel = () => {
-    form.resetFields();
     setIsModalVisible(false);
-  };
-  
-
-  const handleEdit = () => {
     form.resetFields();
-    // console.log("row",rowSelected)
-   
-    setCurrentId(course._id)
-    setIsModalVisible(true);
-  }
+  };
 
-  
+
+  // const handleEdit = () => {
+  //   setCurrentId(courses._id)
+  //   setIsModalVisible(true);
+  // }
 
   const columns = [
     // { title: 'ID', dataIndex: 'id', key: 'id' },
@@ -119,16 +111,15 @@ const TableComponent = ({course, currentId, setCurrentId }) => {
       title: 'Action',
       key: 'action',
       render: (text, record) => (
-        <span>
         
-            <Button icon={<EditOutlined />}   onClick={handleEdit}>
-              Edit
-            </Button>
-            {/* {courses.map((course) => ( */}
-          
+        <span>    
+          <Button icon={<EditOutlined />}  onClick={()=>{setCurrentId(record._id);showModal()}}>
+            Edit
+          </Button>
+
           <Popconfirm
-            title="Are you sure delete this product?"
-            onConfirm={() => dispatch(deleteCourse(course._id))}
+            title="Bạn có chắc chắn muốn xóa bài học này?"
+            onConfirm={() => dispatch(deleteCourse(record._id))}
             okText="Yes"
             cancelText="No"
           >
@@ -136,19 +127,18 @@ const TableComponent = ({course, currentId, setCurrentId }) => {
               Delete
             </Button>
           </Popconfirm>
-            {/* // ))} */}
         </span>
       ),
     },
   ];
 
-  
+
   return (
     <div>
       <Button type="primary" icon={<PlusOutlined />} onClick={showModal}>
         Add Product
       </Button>
-      
+
       <Table dataSource={data} columns={columns} rowKey="id" />
 
       <Modal
@@ -158,7 +148,7 @@ const TableComponent = ({course, currentId, setCurrentId }) => {
         onCancel={handleCancel}
       >
 
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+        <Form style={{ display: 'flex', flexDirection: 'column' }} form={form}>
           <MyFormItem {...formItemLayout} name="name" label="Name" value={postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} >
             <Input style={{}} />
           </MyFormItem >
@@ -177,7 +167,7 @@ const TableComponent = ({course, currentId, setCurrentId }) => {
             <Input />
           </MyFormItem>
 
-        </form>
+        </Form>
       </Modal>
 
     </div>

@@ -11,12 +11,10 @@ import TableComponent from "../TableComponent/TableComponent"
 const AdminCourse = () => {
   const [currentId, setCurrentId] = useState(null);
   const courses = useSelector((state) => state.posts);
-
+  
   return (
     <div>
-      {courses.map((course) => (
-        <TableComponent course={course} currentId={currentId} setCurrentId={setCurrentId}  ></TableComponent>
-      ))}
+        <TableComponent courses={courses} currentId={currentId} setCurrentId={setCurrentId}  ></TableComponent>
     </div>
   )
 }

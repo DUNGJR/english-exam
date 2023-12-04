@@ -9,7 +9,6 @@ import RegisterPage from "../pages/registerpage/RegisterPage";
 import ListenExamPage from "../pages/listenexampage/ListenExamPage";
 import User from "../pages/user/User";
 import EditUser from "../pages/edituser/EditUser";
-import ScorePage from "../pages/score/ScorePage";
 import StudyPage from "../components/study/StudyPage";
 import Result from "../pages/result/Result";
 
@@ -29,10 +28,6 @@ export const routes = [
   {
     path: "/result",
     page: Result,
-  },
-  {
-    path: "/score",
-    page: ScorePage,
   },
 
   {

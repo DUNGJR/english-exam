@@ -19,8 +19,7 @@ const App = () => {
   }, [currentId, dispatch]);
 
   return (
-    <div className="App">
-      
+    <div className="App">     
       <Router>
       <Navbar></Navbar>
         <Routes>
