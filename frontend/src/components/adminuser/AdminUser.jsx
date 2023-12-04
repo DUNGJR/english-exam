@@ -11,10 +11,39 @@ const AdminCourse = () => {
   const [currentId, setCurrentId] = useState(null);
   const users = useSelector((state) => state.users);
   // console.log(users)
+  const [userData, setUserData] = useState(null);
+  const token = localStorage.getItem('token'); // Lấy token từ local storage
+  useEffect(() => {
+    if (!token) {
+      return;
+    }
+    fetch('http://localhost:3001/alluser', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => setUserData(data))
+      .catch((error) => console.error(error));
+  }, [token]);
+
+  if (!userData) {
+    return <p>Loading...</p>;
+  }
+
+  // console.log(userData)
 
   return (
     <div>
-      <UserTableComponent users={users}></UserTableComponent>
+      
+      <UserTableComponent userData={userData}></UserTableComponent>
     </div>
   )
 }

@@ -28,14 +28,11 @@ const formItemLayout = {
 
 
 const TableComponent = (props) => {
-  const {courses = [], currentId, setCurrentId} = props;
+  const {userData = [], currentId, setCurrentId} = props;
   console.log(props)
   const [postData, setPostData] = useState({ name: '', email: '', password: ''})
-  // const [postDataDetail, setPostDatail] = useState({ name: '', topic: '', time: '', part: '', question: '' })
 
   const courseaa = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
-  const users = useSelector((state) => state.users);
-// console.log(users);
 
   const dispatch = useDispatch();
 
@@ -63,9 +60,9 @@ const TableComponent = (props) => {
 
 
   const [data, setData] = [
-    courses?.length &&
-    courses?.map((course) => {
-      return { ...course, key: course._id };
+    userData?.length &&
+    userData?.map((users) => {
+      return { ...users, key: users._id };
     })
   ];
 
@@ -200,10 +197,10 @@ const TableComponent = (props) => {
 
   const columns = [
     // { title: 'ID', dataIndex: 'id', key: 'id' },
-    { title: 'Name', dataIndex: 'name', key: 'name', sorter:(a,b) =>a.name.length - b.name.length,
+    { title: 'Tên', dataIndex: 'name', key: 'name', sorter:(a,b) =>a.name.length - b.name.length,
       ...getColumnSearchProps('name') },
-    { title: 'Topic', dataIndex: 'topic', key: 'topic' },
-    { title: 'Time', dataIndex: 'time', key: 'time', },
+    { title: 'Email', dataIndex: 'email', key: 'email' },
+    { title: 'Tuổi', dataIndex: 'age', key: 'age', },
     { title: 'Part', dataIndex: 'part', key: 'part' },
     { title: 'Question', dataIndex: 'question', key: 'question' },
     {
