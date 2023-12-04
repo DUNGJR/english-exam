@@ -22,6 +22,13 @@ const courseSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    questions: [
+      {
+        content: String,
+        options: [String],
+        correctAnswer: String,
+      },
+    ],
   },
   {
     timestamps: true,

@@ -28,12 +28,13 @@ const formItemLayout = {
 
 
 const TableComponent = (props) => {
-
-  const {userData = [], currentId, setCurrentId} = props;
+  const {courses = [], currentId, setCurrentId} = props;
   console.log(props)
-  const [postData, setPostData] = useState({ name: '', email: '', password: ''})
+  const [postData, setPostData] = useState({ name: '', topic: '', time: '', part: '', question: '' })
+  // const [postDataDetail, setPostDatail] = useState({ name: '', topic: '', time: '', part: '', question: '' })
 
   const courseaa = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+  // const courses = useSelector((state) => state.posts);
 
   const dispatch = useDispatch();
 
@@ -56,14 +57,14 @@ const TableComponent = (props) => {
 
   const clear = () => {
     setCurrentId(null);
-    setPostData({ name: '', email: '', password: '' });
+    setPostData({ name: '', topic: '', time: '', part: '', question: '' });
   }
 
 
   const [data, setData] = [
-    userData?.length &&
-    userData?.map((users) => {
-      return { ...users, key: users._id };
+    courses?.length &&
+    courses?.map((course) => {
+      return { ...course, key: course._id };
     })
   ];
 
@@ -198,10 +199,10 @@ const TableComponent = (props) => {
 
   const columns = [
     // { title: 'ID', dataIndex: 'id', key: 'id' },
-    { title: 'Tên', dataIndex: 'name', key: 'name', sorter:(a,b) =>a.name.length - b.name.length,
+    { title: 'Name', dataIndex: 'name', key: 'name', sorter:(a,b) =>a.name.length - b.name.length,
       ...getColumnSearchProps('name') },
-    { title: 'Email', dataIndex: 'email', key: 'email' },
-    { title: 'Tuổi', dataIndex: 'age', key: 'age', },
+    { title: 'Topic', dataIndex: 'topic', key: 'topic' },
+    { title: 'Time', dataIndex: 'time', key: 'time', },
     { title: 'Part', dataIndex: 'part', key: 'part' },
     { title: 'Question', dataIndex: 'question', key: 'question' },
     {
@@ -236,13 +237,13 @@ const TableComponent = (props) => {
   return (
     <div>
       <Button type="primary" icon={<PlusOutlined />} onClick={showModal}>
-        Add User
+        Add Product
       </Button>
 
       <Table dataSource={data} columns={columns} rowKey="id" />
 
       <Modal
-        title={currentId ? "Edit User" : "Add User"}
+        title={currentId ? "Edit Product" : "Add Product"}
         visible={isModalVisible}
         onOk={handleSubmit}
         onCancel={handleCancel}
@@ -252,14 +253,20 @@ const TableComponent = (props) => {
           <MyFormItem {...formItemLayout} name="name" label="Name" value={postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} >
             <Input style={{}} />
           </MyFormItem >
-          <MyFormItem {...formItemLayout} name="topic" label="Email" value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} >
+          <MyFormItem {...formItemLayout} name="topic" label="Topic" value={postData.topic} onChange={(e) => setPostData({ ...postData, topic: e.target.value })} >
             <Input />
           </MyFormItem>
-          <MyFormItem {...formItemLayout} name="time" label="Pass" value={postData.password} onChange={(e) => setPostData({ ...postData, password: e.target.value })} >
+          <MyFormItem {...formItemLayout} name="time" label="Time" value={postData.time} onChange={(e) => setPostData({ ...postData, time: e.target.value })} >
             <Input />
           </MyFormItem>
 
+          <MyFormItem {...formItemLayout} name="part" label="Part" value={postData.part} onChange={(e) => setPostData({ ...postData, part: e.target.value })} >
+            <Input />
+          </MyFormItem>
 
+          <MyFormItem {...formItemLayout} name="question" label="Question" value={postData.question} onChange={(e) => setPostData({ ...postData, question: e.target.value })} >
+            <Input />
+          </MyFormItem>
 
         </Form>
       </Modal>

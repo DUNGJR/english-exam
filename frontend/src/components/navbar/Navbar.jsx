@@ -34,6 +34,7 @@ const Navbar = () => {
 
           const data = await response.json();
           setUserData(data);
+          localStorage.setItem('admin', data.admin)
         }
       } catch (error) {
         console.error(error);
@@ -44,7 +45,7 @@ const Navbar = () => {
   }, [isLoggedIn]);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    localStorage.clear()
     setLoggedIn(false);
     setUserData({});
     navigate('/')
