@@ -10,6 +10,7 @@ import UserTableComponent from "../TableComponent/UserTableComponent"
 const AdminCourse = () => {
   const [currentId, setCurrentId] = useState(null);
   const users = useSelector((state) => state.users);
+
   // console.log(users)
   const [userData, setUserData] = useState(null);
   const token = localStorage.getItem('token'); // Lấy token từ local storage
@@ -38,7 +39,7 @@ const AdminCourse = () => {
     return <p>Loading...</p>;
   }
 
-  // console.log(userData)
+
 
   return (
     <div>

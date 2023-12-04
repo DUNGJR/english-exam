@@ -182,6 +182,7 @@ mongoose
     }
   });
   
+
   // CREATE (POST)
 app.post('/study', async (req, res) => {
   try {
@@ -257,3 +258,4 @@ app.delete('/studies/:id', async (req, res) => {
     res.status(500).json({ status: 'error', error: error.message });
   }
 });
+

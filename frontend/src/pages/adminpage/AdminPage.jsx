@@ -37,12 +37,12 @@ const AdminPage = ({ currentId, setCurrentId }) => {
   }, [course])
 
   const items = [
+    getItem('Quản lý khóa học', 'course', <AuditOutlined />),
     getItem('Quản lý đề thi', 'exam', <BookOutlined />),
     getItem('Quản lý tài khoản', 'user', <AuditOutlined />),
-    getItem('Quản lý khóa học', 'course', <AuditOutlined />)
 
   ]
-  const [keySelected, setKeySelected] = useState('exam')
+  const [keySelected, setKeySelected] = useState('course')
   const renderPage = (key) => {
     switch (key) {
       case 'user':
@@ -53,10 +53,10 @@ const AdminPage = ({ currentId, setCurrentId }) => {
         return (
           <AdminCourse></AdminCourse>
         )
-        case 'course':
-          return (
-            <AddCourse></AddCourse>
-          )
+      case 'course':
+        return (
+          <AddCourse></AddCourse>
+        )
       default:
         return <></>
     }

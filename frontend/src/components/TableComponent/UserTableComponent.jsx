@@ -28,6 +28,7 @@ const formItemLayout = {
 
 
 const TableComponent = (props) => {
+
   const {userData = [], currentId, setCurrentId} = props;
   console.log(props)
   const [postData, setPostData] = useState({ name: '', email: '', password: ''})
