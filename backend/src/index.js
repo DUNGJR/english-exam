@@ -64,7 +64,7 @@ mongoose
             dob: req.body.dob || null,   
             gender: req.body.gender || '', 
             avata: req.body.avata || '',
-            admin: req.body.admin || '',
+            admin: false,
           })
           res.json({status: 'ok'})
         } catch (error) {

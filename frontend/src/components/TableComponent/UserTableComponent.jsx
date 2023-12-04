@@ -29,7 +29,7 @@ const formItemLayout = {
 
 const TableComponent = (props) => {
   const {courses = [], currentId, setCurrentId} = props;
-  console.log(props)
+  // console.log(props)
   const [postData, setPostData] = useState({ name: '', email: '', password: ''})
   // const [postDataDetail, setPostDatail] = useState({ name: '', topic: '', time: '', part: '', question: '' })
 

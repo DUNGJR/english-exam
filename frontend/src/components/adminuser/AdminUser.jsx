@@ -10,7 +10,7 @@ import UserTableComponent from "../TableComponent/UserTableComponent"
 const AdminCourse = () => {
   const [currentId, setCurrentId] = useState(null);
   const users = useSelector((state) => state.users);
-  // console.log(users)
+  console.log(users)
 
   return (
     <div>
