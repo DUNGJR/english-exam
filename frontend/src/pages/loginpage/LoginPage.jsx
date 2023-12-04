@@ -37,7 +37,7 @@ async function login(event) {
   
 
 if (redirect){
-  return navigate('/')
+  window.location.href = '/';
 }
 
 
