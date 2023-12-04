@@ -20,14 +20,6 @@ const Course = () => {
       <div className="grid">
         <h2 className="course_title">DANH SÁCH KHÓA HỌC</h2>
         <div className="grid__row">
-          {isAdmin && (
-             <>
-             <Button type="primary" className="add-video-button" onClick={handleAddVideo}>
-               Add Course
-             </Button>
-           </>
-          )}
-
           <a href="/course/detail" className="col-md-3">
             <Card
               style={{

@@ -28,9 +28,9 @@ const formItemLayout = {
 
 
 const TableComponent = (props) => {
-  const {courses = [], currentId, setCurrentId} = props;
+  const {studies = [], currentId, setCurrentId} = props;
   console.log(props)
-  const [postData, setPostData] = useState({ name: '', topic: '', time: '', part: '', question: '' })
+  const [postData, setPostData] = useState({ title: '', desc: ''})
   // const [postDataDetail, setPostDatail] = useState({ name: '', topic: '', time: '', part: '', question: '' })
 
   const courseaa = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
@@ -57,14 +57,14 @@ const TableComponent = (props) => {
 
   const clear = () => {
     setCurrentId(null);
-    setPostData({ name: '', topic: '', time: '', part: '', question: '' });
+    setPostData({ title: '', desc: '' });
   }
 
 
   const [data, setData] = [
-    courses?.length &&
-    courses?.map((course) => {
-      return { ...course, key: course._id };
+    studies?.length &&
+    studies?.map((study) => {
+      return { ...study, key: study._id };
     })
   ];
 
@@ -96,11 +96,6 @@ const TableComponent = (props) => {
     form.resetFields();
   };
 
-
-  // const handleEdit = () => {
-  //   setCurrentId(courses._id)
-  //   setIsModalVisible(true);
-  // }
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
@@ -199,12 +194,24 @@ const TableComponent = (props) => {
 
   const columns = [
     // { title: 'ID', dataIndex: 'id', key: 'id' },
-    { title: 'Name', dataIndex: 'name', key: 'name', sorter:(a,b) =>a.name.length - b.name.length,
+    { title: 'Title', dataIndex: 'title', key: 'title', sorter:(a,b) =>a.name.length - b.name.length,
       ...getColumnSearchProps('name') },
-    { title: 'Topic', dataIndex: 'topic', key: 'topic' },
-    { title: 'Time', dataIndex: 'time', key: 'time', },
-    { title: 'Part', dataIndex: 'part', key: 'part' },
-    { title: 'Question', dataIndex: 'question', key: 'question' },
+    { title: 'Desc', dataIndex: 'desc', key: 'desc' },
+    { title: 'Video',
+    dataIndex: 'videos',
+    key: 'video',
+    render: (videos, record) => (
+      <span>
+        {videos.map((video, index) => (
+          <div key={`${record.key}-video-${index}`}>
+            <h3>{video.videotitle}</h3>
+            <p>{video.videodesc}</p>
+            <p>{video.videoSchema}</p>
+
+          </div>
+        ))}
+      </span>
+    ),},
     {
       title: 'Action',
       key: 'action',
@@ -257,14 +264,6 @@ const TableComponent = (props) => {
             <Input />
           </MyFormItem>
           <MyFormItem {...formItemLayout} name="time" label="Time" value={postData.time} onChange={(e) => setPostData({ ...postData, time: e.target.value })} >
-            <Input />
-          </MyFormItem>
-
-          <MyFormItem {...formItemLayout} name="part" label="Part" value={postData.part} onChange={(e) => setPostData({ ...postData, part: e.target.value })} >
-            <Input />
-          </MyFormItem>
-
-          <MyFormItem {...formItemLayout} name="question" label="Question" value={postData.question} onChange={(e) => setPostData({ ...postData, question: e.target.value })} >
             <Input />
           </MyFormItem>
 
