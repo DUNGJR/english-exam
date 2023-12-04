@@ -6,3 +6,4 @@ export { default as Course } from "./course/Course";
 export { default as Blog } from "./blog/Blog";
 export { default as Footer } from "./footer/Footer";
 export { default as Video } from "./study/StudyPage";
+

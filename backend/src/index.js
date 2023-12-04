@@ -11,8 +11,7 @@ import { UserModel } from './models/UserModel.js';
 import dotenv from "dotenv";
 import morgan from "morgan";
 import jwt from "jsonwebtoken"
-import { Video } from "./models/VideoModel.js";
-
+import { StudyModel } from "./models/StudyModel.js";
 
 
 const app = express();
@@ -64,7 +63,7 @@ mongoose
             dob: req.body.dob || null,   
             gender: req.body.gender || '', 
             avata: req.body.avata || '',
-            admin: req.body.admin || '',
+            admin: false,
           })
           res.json({status: 'ok'})
         } catch (error) {
@@ -72,6 +71,19 @@ mongoose
         }
   })
 
+  app.post('/course', async (req, res) => {
+      try {
+        await StudyModel.create({
+          title: req.body.title,
+          desc: req.body.decs
+        })
+        res.json({status: 'ok'})
+      } catch(error) {
+        res.json({status: 'error',error})
+      }
+  })
+
+  
   app.post('/course/detail', async (req, res) => {
     try {
       const { title, url, description } = req.body;
@@ -179,4 +191,5 @@ mongoose
       res.status(500).json({ message: 'Lỗi Rồi ' });
     }
   });
+  
   

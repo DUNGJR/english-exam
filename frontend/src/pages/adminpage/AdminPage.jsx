@@ -9,7 +9,7 @@ import "./adminpage.css";
 import { BookOutlined, AuditOutlined, ReadOutlined, SoundOutlined, UploadOutlined, EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import AdminUser from "../../components/adminuser/AdminUser"
 import AdminCourse from "../../components/admincourse/AdminCourse"
-
+import addCourse from "../../components/course/addCourse"
 const { Header, Content, Sider } = Layout;
 const { Search } = Input;
 const { Meta } = Card;
@@ -37,20 +37,26 @@ const AdminPage = ({ currentId, setCurrentId }) => {
   }, [course])
 
   const items = [
-    getItem('Quản lý đề thi', 'course', <BookOutlined />),
-    getItem('Quản lý tài khoản', 'user', <AuditOutlined />)
+    getItem('Quản lý đề thi', 'exam', <BookOutlined />),
+    getItem('Quản lý tài khoản', 'user', <AuditOutlined />),
+    getItem('Quản lý khóa học', 'course', <AuditOutlined />)
+
   ]
-  const [keySelected, setKeySelected] = useState('course')
+  const [keySelected, setKeySelected] = useState('exam')
   const renderPage = (key) => {
     switch (key) {
       case 'user':
         return (
           <AdminUser></AdminUser>
         )
-      case 'course':
+      case 'exam':
         return (
           <AdminCourse></AdminCourse>
         )
+        case 'course':
+          return (
+            <addCourse></addCourse>
+          )
       default:
         return <></>
     }
