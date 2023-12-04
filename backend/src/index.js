@@ -11,6 +11,8 @@ import { UserModel } from './models/UserModel.js';
 import dotenv from "dotenv";
 import morgan from "morgan";
 import jwt from "jsonwebtoken"
+import { Video } from "./models/VideoModel.js";
+
 
 
 const app = express();
@@ -59,6 +61,7 @@ mongoose
             dob: req.body.dob || null,   
             gender: req.body.gender || '', 
             avata: req.body.avata || '',
+            admin: req.body.admin || '',
           })
           res.json({status: 'ok'})
         } catch (error) {
@@ -66,10 +69,29 @@ mongoose
         }
   })
 
-
+  app.post('/course/detail', async (req, res) => {
+    try {
+      const { title, url, description } = req.body;
+      // Kiểm tra xem URL đã tồn tại chưa
+      const existingVideo = await Video.findOne({ url });
+      if (existingVideo) {
+        return res.status(400).json({ status: 'error', message: 'URL already exists' });
+      }
+      // Nếu URL chưa tồn tại, tiến hành tạo mới Video
+      await Video.create({
+        title,
+        url,
+        description: description || null,
+      });
+  
+      res.json({ status: 'ok' });
+    } catch (error) {
+      res.status(500).json({ status: 'error', error });
+    }
+  });
+  
   app.post('/edituser', async (req, res) => {
     const userEmail = req.body.email;
-
     try {
         const updatedUser = await UserModel.findOneAndUpdate(
             { email: userEmail },
@@ -82,6 +104,7 @@ mongoose
                     gender: req.body.gender || '',
                     bio: req.body.bio || '',
                     avata: req.body.avata || '',
+                    admin: req.body.admin || '',
                 },
             },
             { new: true }
@@ -113,6 +136,7 @@ mongoose
                     gender: user.gender || '',
                     bio: user.bio || '',
                     avata: user.avata || '', 
+                    admin: req.body.admin || '',
                 }, 'secret123');
   
                 return res.json({ status: 'ok', user: token});
@@ -136,17 +160,14 @@ mongoose
       if (!token) {
         return res.status(401).json({ message: 'Unauthorized' });
       }
-      // Giải mã token để lấy thông tin người dùng
       const decodedToken = jwt.verify(token, 'secret123'); // Thay thế 'your-secret-key' bằng secret key bạn đã sử dụng khi tạo token
-      // Sử dụng thông tin người dùng để truy vấn cơ sở dữ liệu
       const userData = await UserModel.findOne({ email: decodedToken.email });
       if (!userData) {
         return res.status(404).json({ message: 'Không tìm thấy người dùng' });
       }
-  
       // Trả về dữ liệu người dùng (bao gồm name, email, và password)
-      const { name, email, password, age, dob, gender, bio, avata} = userData;
-      res.json({ name, email, password, age, dob, gender, bio, avata});
+      const { name, email, password, age, dob, gender, bio, avata, admin} = userData;
+      return res.json({ name, email, password, age, dob, gender, bio, avata, admin});
     } catch (error) {
       console.error(error);
       if (error.name === 'JsonWebTokenError') {

@@ -28,6 +28,10 @@ const userSchema = mongoose.Schema(
     },
     avata: {
       type: String
+    },
+    admin: {
+      type: Boolean,
+      default: false,
     }
   },
   {

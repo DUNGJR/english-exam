@@ -14,9 +14,9 @@ const AdminCourse = () => {
 
   return (
     <div>
-      {courses.map((course) => (
+      {/* {courses.map((course) => (
         <TableComponent course={course} currentId={currentId} setCurrentId={setCurrentId}  ></TableComponent>
-      ))}
+      ))} */}
     </div>
   )
 }

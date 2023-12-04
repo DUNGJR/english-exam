@@ -4,9 +4,9 @@ import { Layout, Menu, Modal, Form, Input, Button } from 'antd';
 const { Header, Content, Sider } = Layout;
 
 const Video = () => {
-  const [videoUrl, setVideoUrl] = useState('');
-  const [currentTitle, setCurrentTitle] = useState('');
-  const [currentDescription, setCurrentDescription] = useState('');
+  const [Url, setUrl] = useState('');
+  const [Title, setTitle] = useState('');
+  const [Description, setDescription] = useState('');
   const [videoList, setVideoList] = useState([
     { title: 'Bài học 1:', url: 'https://www.youtube.com/embed/MwLB1u-4ogw?si=8NtVkfLE5SJSLQSX', description: 'TỰ HỌC TOEIC READING MỤC TIÊU 500 TOEIC: Unit 1| Ms Hoa TOEIC' },
     { title: 'Bài học 2:', url: 'https://www.youtube.com/embed/1JFTaaatqVo?si=e1thRomd83mqCojR', description: 'TỰ HỌC TOEIC READING MỤC TIÊU 500 TOEIC: Unit 2| Ms Hoa TOEIC' },
@@ -14,6 +14,8 @@ const Video = () => {
   ]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
+
+  
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -38,30 +40,66 @@ const Video = () => {
   };
 
   const handleMenuClick = (video) => {
-    setVideoUrl(video.url);
-    setCurrentTitle(video.title);
-    setCurrentDescription(video.description);
+    setUrl(video.url);
+    setTitle(video.title);
+    setDescription(video.description);
   };
+
+
+  async function uploadVideo(event){
+    event.preventDefault();
+
+    const response = await fetch('http://localhost:3001/course/detail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        Url,
+        Title,
+        Description
+      }),
+    });
+    const data = await response.json();
+    if (data.status === 'ok') {
+      alert('Up Video Thành Công!');
+    } else {
+      // Đăng ký không thành công
+      alert(`Up Video Thất Bại: ${data.error}`);
+      console.error(data.error);
+    }
+  }
+
 
   return (
     <Layout>
-      <Header style={{ color: 'white', textAlign: 'center', fontSize: '20px' }}>
-        Video Viewer
-      </Header>
-
       <Modal title="Add New Video" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <Form form={form} layout="vertical">
-          <Form.Item name="title" label="Title" rules={[{ required: true, message: 'Please input the title!' }]}>
-            <Input />
+        <form onSubmit={uploadVideo} layout="vertical">
+          <Form.Item name="Title" label="Title" rules={[{ required: true, message: 'Please input the title!' }]}>
+            <Input 
+            value={Title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Enter Video's Title"
+            />
           </Form.Item>
-          <Form.Item name="url" label="URL" rules={[{ required: true, message: 'Please input the URL!' }]}>
-            <Input />
+          <Form.Item name="videoUrl" label="URL" rules={[{ required: true, message: 'Please input the URL!' }]}>
+            <Input
+            value={Url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="Enter Video's URL"
+            />
           </Form.Item>
-          <Form.Item name="description" label="Description">
-            <Input.TextArea />
+          <Form.Item name="Description" label="Description">
+            <Input.TextArea 
+            value={Description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Enter Video's Description"
+            />
           </Form.Item>
-        </Form>
+        </form>
       </Modal>
+
+
       <Layout>
         <Sider width={200}>
           <Menu
@@ -90,16 +128,16 @@ const Video = () => {
           }}
           >
             <div style={{ width: '1280px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              {videoUrl && <iframe width="1280" height="720" src={videoUrl} title="Video Player" frameBorder="0" allowFullScreen></iframe>}
-              <h2>{currentTitle}</h2>
-              <p>{currentDescription}</p>
+              {Url && <iframe width="1280" height="720" src={Url} title="Video Player" frameBorder="0" allowFullScreen></iframe>}
+              <h2>{Title}</h2>
+              <p>{Description}</p>
             </div>
           </Content>
         </Layout>
       </Layout>
-      {/* <Button type="primary" onClick={showModal} style={{ margin: '10px' }}>
+      <Button type="primary" onClick={showModal} style={{ margin: '10px' }}>
         Add Video
-      </Button> */}
+      </Button>
     </Layout>
   );
 };

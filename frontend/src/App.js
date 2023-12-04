@@ -20,8 +20,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <Navbar></Navbar>
+      
       <Router>
+      <Navbar></Navbar>
         <Routes>
           {routes.map((route) => {
             const Page = route.page;
