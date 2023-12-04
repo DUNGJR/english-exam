@@ -1,4 +1,4 @@
-import * as api from "../api";
+import * as api from "../api/index";
 
 export const getCourse = () => async (dispatch) => {
   try {

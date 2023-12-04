@@ -32,6 +32,9 @@ app.get("/", (request, response) => {
 
 app.use("/course", CourseRoute);
 app.use("/api", QuestionRouter);
+app.use("/alluser", UserRouter);
+
+
 
 // Connect to database
 mongoose

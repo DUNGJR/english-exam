@@ -4,8 +4,11 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import questionReducer from './question_reducer';
 import resultReducer from './result_reducer';
 import posts from "../reducers/posts";
+import users from "../reducers/users";
+
 
 const rootReducer = combineReducers({
+    users: users,
     posts: posts,
     questions : questionReducer,
     result : resultReducer
