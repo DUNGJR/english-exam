@@ -3,10 +3,11 @@ import { deleteCourse } from "../../actions/posts";
 
 import { Layout, Menu, Space, Input, Card, Col, Row, Divider, Button, message, Upload, Table, Modal, Form, Popconfirm, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { createCourse, updateCourse } from "../../actions/posts";
+import { createStudy, updateStudy } from "../../actions/courses";
 import { BookOutlined, AuditOutlined, ReadOutlined, SoundOutlined, UploadOutlined, EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
+import { deleteStudy } from "../../actions/courses";
 
 const MyFormItemContext = React.createContext([]);
 function toArr(str) {
@@ -46,10 +47,10 @@ const TableComponent = (props) => {
     e.preventDefault();
 
     if (currentId) {
-      dispatch(updateCourse(currentId, postData));
+      dispatch(updateStudy(currentId, postData));
     }
     else {
-      dispatch(createCourse(postData));
+      dispatch(createStudy(postData));
     }
     console.log(currentId)
     clear()
@@ -194,8 +195,8 @@ const TableComponent = (props) => {
 
   const columns = [
     // { title: 'ID', dataIndex: 'id', key: 'id' },
-    { title: 'Title', dataIndex: 'title', key: 'title', sorter:(a,b) =>a.name.length - b.name.length,
-      ...getColumnSearchProps('name') },
+    { title: 'Title', dataIndex: 'title', key: 'title', sorter:(a,b) =>a.title.length - b.title.length,
+      ...getColumnSearchProps('title') },
     { title: 'Desc', dataIndex: 'desc', key: 'desc' },
     { title: 'Video',
     dataIndex: 'videos',
@@ -224,7 +225,7 @@ const TableComponent = (props) => {
 
           <Popconfirm
             title="Bạn có chắc chắn muốn xóa bài học này?"
-            onConfirm={() => dispatch(deleteCourse(record._id))}
+            onConfirm={() => dispatch(deleteStudy(record._id))}
             okText="Yes"
             cancelText="No"
           >
@@ -239,34 +240,31 @@ const TableComponent = (props) => {
 
 
   
-
-
   return (
     <div>
       <Button type="primary" icon={<PlusOutlined />} onClick={showModal}>
-        Add Product
+        Thêm Khóa Học
       </Button>
 
       <Table dataSource={data} columns={columns} rowKey="id" />
 
       <Modal
-        title={currentId ? "Edit Product" : "Add Product"}
+        title={currentId ? "Sửa Khóa Học" : "Thêm Khóa Học"}
         visible={isModalVisible}
         onOk={handleSubmit}
         onCancel={handleCancel}
       >
 
         <Form style={{ display: 'flex', flexDirection: 'column' }} form={form}>
-          <MyFormItem {...formItemLayout} name="name" label="Name" value={postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} >
+          <MyFormItem {...formItemLayout} name="title" label="Title" value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} >
             <Input style={{}} />
           </MyFormItem >
-          <MyFormItem {...formItemLayout} name="topic" label="Topic" value={postData.topic} onChange={(e) => setPostData({ ...postData, topic: e.target.value })} >
+          <MyFormItem {...formItemLayout} name="desc" label="Desc" value={postData.desc} onChange={(e) => setPostData({ ...postData, desc: e.target.value })} >
             <Input />
           </MyFormItem>
-          <MyFormItem {...formItemLayout} name="time" label="Time" value={postData.time} onChange={(e) => setPostData({ ...postData, time: e.target.value })} >
+          <MyFormItem {...formItemLayout} name="videos" label="Videos" value={postData.videos} onChange={(e) => setPostData({ ...postData, videos: e.target.value })} >
             <Input />
           </MyFormItem>
-
         </Form>
       </Modal>
 
@@ -274,3 +272,5 @@ const TableComponent = (props) => {
   )
 }
 export default TableComponent
+
+

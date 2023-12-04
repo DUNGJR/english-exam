@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const studySchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
   },
   desc: {
     type: String,
@@ -15,7 +14,6 @@ const studySchema = new mongoose.Schema({
       },
       videotitle: {
         type: String,
-        required: true,
       },
       videodesc: {
         type: String,

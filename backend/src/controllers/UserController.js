@@ -1,8 +1,9 @@
 import { UserModel } from "../models/UserModel.js";
 import bcrypt, { hash, compare } from 'bcrypt';
+import mongoose from "mongoose";
 
 // Route for Save a new Course
-export const postPosts = (req, res) => {
+export const postUser = (req, res) => {
   try {
     const {
       name,
@@ -54,7 +55,7 @@ export const postPosts = (req, res) => {
 };
 
 // Route for Get All Courses from database
-export const getPosts = async (req, res) => {
+export const getUser = async (req, res) => {
   try {
     const user = await UserModel.find({});
     res.status(200).json(user);
@@ -101,11 +102,11 @@ var salt = bcrypt.genSaltSync(10);
                     name: req.body.name,
                     email: req.body.email,
                     age: req.body.age !== null ? req.body.age : null,
-                    dob: req.body.dob !== null ? new Date(req.body.dob) : null,
+                    // dob: req.body.dob !== null ? new Date(req.body.dob) : null,
                     gender: req.body.gender || '',
                     bio: req.body.bio || '',
                     avata: req.body.avata || '',
-                    admin: req.body.admin || '',
+                    admin: req.body.admin || 'false',
                 },
             },
             { new: true }
@@ -180,5 +181,21 @@ export const getUsers = async (req, res) => {
       return res.status(401).json({ message: 'Invalid token' });
     }
     res.status(500).json({ message: 'Lỗi Rồi ' });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).send("No user with that id");
+    }
+
+    await UserModel.findByIdAndDelete(id);
+    return res.status(200).send({ message: "User deleted successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
   }
 };

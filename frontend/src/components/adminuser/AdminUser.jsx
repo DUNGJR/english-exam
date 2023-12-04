@@ -44,7 +44,7 @@ const AdminCourse = () => {
   return (
     <div>
       
-      <UserTableComponent userData={userData}></UserTableComponent>
+      <UserTableComponent userData={userData} currentId={currentId} setCurrentId={setCurrentId}></UserTableComponent>
     </div>
   )
 }

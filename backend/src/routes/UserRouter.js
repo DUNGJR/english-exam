@@ -1,11 +1,13 @@
 import express from 'express';
 const router = express.Router();
-import {postPosts,getPosts,postUsers,editPostUsers,loginUsers,getUsers} from '../controllers/UserController.js';
+import {postUser,getUser,deleteUser,postUsers,editPostUsers,loginUsers,getUsers} from '../controllers/UserController.js';
 
 
 // Route for Save a new Course
-router.post('/', postPosts);
-router.get('/', getPosts);
+router.post('/', postUser);
+router.get('/', getUser);
+router.patch('/:id', editPostUsers);
+router.delete('/:id', deleteUser);
 
 
 router.post('/register', postUsers);

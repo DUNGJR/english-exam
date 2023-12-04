@@ -1,9 +1,9 @@
 import React, {useRef, useState, useEffect } from "react";
-import { deleteCourse } from "../../actions/posts";
+import { deleteUser } from "../../actions/users";
 
 import { Layout, Menu, Space, Input, Card, Col, Row, Divider, Button, message, Upload, Table, Modal, Form, Popconfirm, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { createCourse, updateCourse } from "../../actions/posts";
+import { createUser, updateUser } from "../../actions/users";
 import { BookOutlined, AuditOutlined, ReadOutlined, SoundOutlined, UploadOutlined, EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
@@ -28,10 +28,9 @@ const formItemLayout = {
 
 
 const TableComponent = (props) => {
-
   const {userData = [], currentId, setCurrentId} = props;
   console.log(props)
-  const [postData, setPostData] = useState({ name: '', email: '', password: ''})
+  const [postData, setPostData] = useState({ name: '', email: '', age: ''})
 
   const courseaa = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
 
@@ -45,10 +44,10 @@ const TableComponent = (props) => {
     e.preventDefault();
 
     if (currentId) {
-      dispatch(updateCourse(currentId, postData));
+      dispatch(updateUser(currentId, postData));
     }
     else {
-      dispatch(createCourse(postData));
+      dispatch(createUser(postData));
     }
     console.log(currentId)
     clear()
@@ -56,7 +55,7 @@ const TableComponent = (props) => {
 
   const clear = () => {
     setCurrentId(null);
-    setPostData({ name: '', email: '', password: '' });
+    setPostData({ name: '', email: '', age: '' });
   }
 
 
@@ -202,8 +201,6 @@ const TableComponent = (props) => {
       ...getColumnSearchProps('name') },
     { title: 'Email', dataIndex: 'email', key: 'email' },
     { title: 'Tuổi', dataIndex: 'age', key: 'age', },
-    { title: 'Part', dataIndex: 'part', key: 'part' },
-    { title: 'Question', dataIndex: 'question', key: 'question' },
     {
       title: 'Action',
       key: 'action',
@@ -216,7 +213,7 @@ const TableComponent = (props) => {
 
           <Popconfirm
             title="Bạn có chắc chắn muốn xóa bài học này?"
-            onConfirm={() => dispatch(deleteCourse(record._id))}
+            onConfirm={() => dispatch(deleteUser(record._id))}
             okText="Yes"
             cancelText="No"
           >
@@ -252,10 +249,10 @@ const TableComponent = (props) => {
           <MyFormItem {...formItemLayout} name="name" label="Name" value={postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} >
             <Input style={{}} />
           </MyFormItem >
-          <MyFormItem {...formItemLayout} name="topic" label="Email" value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} >
+          <MyFormItem {...formItemLayout} name="email" label="Email" value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} >
             <Input />
           </MyFormItem>
-          <MyFormItem {...formItemLayout} name="time" label="Pass" value={postData.password} onChange={(e) => setPostData({ ...postData, password: e.target.value })} >
+          <MyFormItem {...formItemLayout} name="age" label="Age" value={postData.age} onChange={(e) => setPostData({ ...postData, age: e.target.value })} >
             <Input />
           </MyFormItem>
 

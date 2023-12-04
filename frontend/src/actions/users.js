@@ -20,7 +20,7 @@ export const createUser = (user) => async (dispatch) => {
 
 export const updateUser = (id, user) => async (dispatch) => {
   try {
-    const { data } = await api.updateCourse(id, user);
+    const { data } = await api.updateUser(id, user);
     dispatch({ type: "UPDATE_USER", payload: data });
   } catch (error) {
     console.log(error);
