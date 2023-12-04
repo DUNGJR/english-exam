@@ -7,15 +7,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { createCourse, updateCourse } from "../../actions/posts";
 import { BookOutlined, AuditOutlined, ReadOutlined, SoundOutlined, UploadOutlined, EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import UserTableComponent from "../TableComponent/UserTableComponent"
-import * as UserService from "../../api/userService";
 const AdminCourse = () => {
   const [currentId, setCurrentId] = useState(null);
   const users = useSelector((state) => state.users);
   // console.log(users)
-  const getUsers = async () => {
-    const res = await UserService.getAllUser()
-    console.log(res)
-  }
 
   return (
     <div>
