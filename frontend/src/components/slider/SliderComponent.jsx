@@ -12,10 +12,10 @@ const SliderComponent = ({ arrImages }) => {
     autoplaySpeed: 1000
   };
   return (
-    <div class="grid">
+<div className="grid" style={{ marginTop: '20px', boxShadow: '5px 5px 5px #ccc' }}>
       <Slider {...settings}>
         {arrImages.map((image) => {
-          return <Image src={image} alt="slider" width="100%" height="274px" preview={false}></Image>;
+          return <Image src={image} alt="slider" width="100%" height="500px" preview={false}></Image>;
         })}
       </Slider>
     </div>

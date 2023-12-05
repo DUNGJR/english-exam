@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Checkbox, Card, Input, Tooltip, Space, Radio } from 'antd';
+import { Form, Button, Checkbox, Card, Input, Tooltip, Space, Radio, } from 'antd';
 import { UserOutlined, LockOutlined,InfoCircleOutlined, EyeTwoTone, EyeInvisibleOutlined  } from '@ant-design/icons';
 import './loginpage.css'
 import  { useState } from 'react';
@@ -27,7 +27,7 @@ async function login(event) {
     const data = await response.json()
     if(data.user){
       localStorage.setItem('token', data.user);
-      alert('login succes')
+      alert("Chào mừng bạn đến với LD English")
       setRedirect(true);
     } else {
       alert("Login failed")
@@ -52,12 +52,12 @@ return (
       <Space direction="vertical" style={{ width: '100%' }}>
         <Form.Item
           name="email"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          rules={[{ required: true, message: 'Vui lòng nhập email của bạn' }]}
         >
           <Input        
             value={email}   
             onChange={(e)=> setEmail(e.target.value)} 
-            placeholder="Enter your email"
+            placeholder="Vui lòng nhập email của bạn"
             prefix={<UserOutlined className="site-form-item-icon" />}
             suffix={
               <Tooltip title="Extra information">
@@ -69,13 +69,13 @@ return (
 
         <Form.Item
           name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
+          rules={[{ required: true, message: 'Vui lòng nhập mật khẩu của bạn' }]}
         >
           <Input.Password
           value={password}
           onChange={(e)=> setPassword(e.target.value)}
             prefix={<LockOutlined />}
-            placeholder="Input password"
+            placeholder="Vui lòng nhập mật khẩu của bạn"
             iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
           />
         </Form.Item>

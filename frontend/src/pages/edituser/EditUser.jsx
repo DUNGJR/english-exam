@@ -15,6 +15,7 @@ const EditUserProfile = () => {
     dob: null,
     gender: '',
     bio: '',
+    age: ''
   });
 
   const onFinish = async (values) => {

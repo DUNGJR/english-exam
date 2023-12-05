@@ -39,7 +39,10 @@ export default function Result() {
 
     return (
         <div className='container'>
-            <h1 className='title text-light'>Quiz Application</h1>
+            <div className='tittle'>
+                <h1 className='title text-light'>Kết Quả Bài Thi</h1>    
+            </div>
+            
 
             <div className='result flex-center'>
                 <div className='flex'>

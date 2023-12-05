@@ -1,12 +1,16 @@
 import React, {useRef, useState, useEffect } from "react";
 import { deleteUser } from "../../actions/users";
 
-import { Layout, Menu, Space, Input, Card, Col, Row, Divider, Button, message, Upload, Table, Modal, Form, Popconfirm, Spin } from "antd";
+import { Layout, Menu, Space, Input, DatePicker , Select , Card, Col, Row, Divider, Button, message, Upload, Table, Modal, Form, Popconfirm, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { createUser, updateUser } from "../../actions/users";
 import { BookOutlined, AuditOutlined, ReadOutlined, SoundOutlined, UploadOutlined, EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
+import moment from "moment";
+
+const { Option } = Select;
+
 
 const MyFormItemContext = React.createContext([]);
 function toArr(str) {
@@ -30,7 +34,7 @@ const formItemLayout = {
 const TableComponent = (props) => {
   const {userData = [], currentId, setCurrentId} = props;
   console.log(props)
-  const [postData, setPostData] = useState({ name: '', email: '', age: ''})
+  const [postData, setPostData] = useState({ name: '', email: '', dob: '', admin: ''})
 
   const courseaa = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
 
@@ -55,7 +59,7 @@ const TableComponent = (props) => {
 
   const clear = () => {
     setCurrentId(null);
-    setPostData({ name: '', email: '', age: '' });
+    setPostData({ name: '', email: '', dob: '', admin: '' });
   }
 
 
@@ -200,7 +204,17 @@ const TableComponent = (props) => {
     { title: 'Tên', dataIndex: 'name', key: 'name', sorter:(a,b) =>a.name.length - b.name.length,
       ...getColumnSearchProps('name') },
     { title: 'Email', dataIndex: 'email', key: 'email' },
-    { title: 'Tuổi', dataIndex: 'age', key: 'age', },
+    { title: 'Ngày Sinh',
+      dataIndex: 'dob',
+      key: 'dob',
+      render: (text) => text ? moment(text).format('YYYY-MM-DD') : '',
+    },
+    {
+      title: 'Admin',
+      dataIndex: 'admin',
+      key: 'admin',
+      render: (admin) => <span>{admin ? 'Yes' : 'No'}</span>,
+    },
     {
       title: 'Action',
       key: 'action',
@@ -232,10 +246,6 @@ const TableComponent = (props) => {
 
   return (
     <div>
-      <Button type="primary" icon={<PlusOutlined />} onClick={showModal}>
-        Add User
-      </Button>
-
       <Table dataSource={data} columns={columns} rowKey="id" />
 
       <Modal
@@ -246,17 +256,29 @@ const TableComponent = (props) => {
       >
 
         <Form style={{ display: 'flex', flexDirection: 'column' }} form={form}>
-          <MyFormItem {...formItemLayout} name="name" label="Name" value={postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} >
-            <Input style={{}} />
-          </MyFormItem >
           <MyFormItem {...formItemLayout} name="email" label="Email" value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} >
             <Input />
           </MyFormItem>
-          <MyFormItem {...formItemLayout} name="age" label="Age" value={postData.age} onChange={(e) => setPostData({ ...postData, age: e.target.value })} >
-            <Input />
+          <MyFormItem {...formItemLayout} name="name" label="Name" value={postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} >
+            <Input style={{}} />
+          </MyFormItem >
+          <MyFormItem {...formItemLayout} name="dob" label="Dob" value={postData.dob ? moment(postData.dob, 'YYYY-MM-DD') : null}>
+            <DatePicker
+              style={{ width: '100%' }}
+              format="YYYY-MM-DD"
+              onChange={(date) => setPostData({ ...postData, dob: date })}
+            />
           </MyFormItem>
+          {/* <MyFormItem {...formItemLayout} name="admin" label="Admin" value={postData.admin} onChange={(value) => setPostData({ ...postData, admin:value.target.value  })}>
+            <Select>
+              <Option value={true}>True</Option>
+              <Option value={false}>False</Option>
+            </Select>
+          </MyFormItem> */}
 
-
+          <MyFormItem {...formItemLayout} name="admin" label="Admin" value={postData.admin} onChange={(e) => setPostData({ ...postData, admin: e.target.value })} >
+            <Input style={{}} />
+          </MyFormItem >
 
         </Form>
       </Modal>

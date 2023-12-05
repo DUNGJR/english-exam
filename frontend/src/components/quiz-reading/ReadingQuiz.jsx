@@ -35,6 +35,7 @@ const Quiz = ({ onChecked }) => {
       console.log('changed!');
     }
   };
+  
 
   if (isLoading) return <h3>Loading...</h3>
   if (serverError) return <h3 className='text-light'>{serverError || "Unknown Error"}</h3>

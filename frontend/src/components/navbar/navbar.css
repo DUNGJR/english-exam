@@ -5,6 +5,12 @@
   padding: 2rem 6rem;
   background: var(--color-bg-navbar);
   height: 80px;
+  box-shadow: 5px 5px 5px #ccc;}
+
+.navbar-logo {
+  max-width: 100px; /* Đặt kích thước tối đa cho logo */
+  margin-right: 20px; /* Khoảng cách giữa logo và nội dung khác */
+  border-radius: 30px;
 }
 
 .navbar-links {
@@ -61,6 +67,8 @@
   border: 0;
 }
 
-.navbar-link_login {
-  /* margin-left: ; */
+
+
+.useroverview{
+  cursor: pointer;
 }

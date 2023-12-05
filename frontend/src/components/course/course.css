@@ -1,3 +1,12 @@
 .course {
   margin-top: 20px;
 }
+
+.card {
+  box-shadow: 5px 5px 5px #ccc;
+  
+}
+
+.Ctitle .ant-card-meta-title {
+  text-transform: capitalize;
+}

@@ -102,7 +102,7 @@ var salt = bcrypt.genSaltSync(10);
                     name: req.body.name,
                     email: req.body.email,
                     age: req.body.age !== null ? req.body.age : null,
-                    // dob: req.body.dob !== null ? new Date(req.body.dob) : null,
+                    dob: req.body.dob !== null ? new Date(req.body.dob) : null,
                     gender: req.body.gender || '',
                     bio: req.body.bio || '',
                     avata: req.body.avata || '',

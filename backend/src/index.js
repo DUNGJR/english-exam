@@ -73,26 +73,6 @@ mongoose
 
 
   
-  app.post('/course/detail', async (req, res) => {
-    try {
-      const { title, url, description } = req.body;
-      // Kiểm tra xem URL đã tồn tại chưa
-      const existingVideo = await Video.findOne({ url });
-      if (existingVideo) {
-        return res.status(400).json({ status: 'error', message: 'URL already exists' });
-      }
-      // Nếu URL chưa tồn tại, tiến hành tạo mới Video
-      await Video.create({
-        title,
-        url,
-        description: description || null,
-      });
-  
-      res.json({ status: 'ok' });
-    } catch (error) {
-      res.status(500).json({ status: 'error', error });
-    }
-  });
   
   app.post('/edituser', async (req, res) => {
     const userEmail = req.body.email;
@@ -108,7 +88,7 @@ mongoose
                     gender: req.body.gender || '',
                     bio: req.body.bio || '',
                     avata: req.body.avata || '',
-                    admin: req.body.admin || '',
+                    admin: req.body.admin || 'false',
                 },
             },
             { new: true }
@@ -182,4 +162,5 @@ mongoose
   });
   
 
+ 
  

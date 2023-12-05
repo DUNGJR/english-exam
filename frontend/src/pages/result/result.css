@@ -7,6 +7,10 @@
     gap: 1em;
 }
 
+.container{
+    margin-top: 20px;
+}
+
 .container .flex{
     display: flex;
     justify-content: space-between;
@@ -15,7 +19,7 @@
 
 .container .flex span {
     font-size: 1.4em;
-    color: #cecece;
+    color: #24a3b4;
 }
 
 .container .flex span.achive {
@@ -46,4 +50,14 @@ table {
 
 .table-header > tr > td{
     border: 1px solid #faff5a;   
+}
+
+.start{
+    margin: 20px;
+}
+
+.tittle{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
 }
