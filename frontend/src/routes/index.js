@@ -7,8 +7,8 @@ import BlogPage from "../pages/blogpage/BlogPage";
 import LoginPage from "../pages/loginpage/LoginPage";
 import RegisterPage from "../pages/registerpage/RegisterPage";
 import ListenExamPage from "../pages/listenexampage/ListenExamPage";
-import User from "../pages/user/User";
-import EditUser from "../pages/edituser/EditUser";
+import User from "../pages/userpage/UserPage";
+import EditUser from "../pages/edituserpage/EditUser";
 import StudyPage from "../components/study/StudyPage";
 import Result from "../pages/result/Result";
 

@@ -1,4 +1,4 @@
-import { Content, Footer } from "../../components"
+import { Exam, Footer } from "../../components"
 
 
 
@@ -6,7 +6,7 @@ import { Content, Footer } from "../../components"
 const HomePage = () => {
   return (
     <div>
-      <Content></Content>
+      <Exam></Exam>
       <Footer></Footer>
     </div>
   )

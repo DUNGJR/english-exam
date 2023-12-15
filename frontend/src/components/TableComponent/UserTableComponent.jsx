@@ -216,13 +216,13 @@ const TableComponent = (props) => {
       render: (admin) => <span>{admin ? 'Yes' : 'No'}</span>,
     },
     {
-      title: 'Action',
+      title: 'Thực thi',
       key: 'action',
       render: (text, record) => (
         
         <span>    
           <Button icon={<EditOutlined />}  onClick={()=>{setCurrentId(record._id);showModal()}}>
-            Edit
+            Sửa
           </Button>
 
           <Popconfirm
@@ -232,7 +232,7 @@ const TableComponent = (props) => {
             cancelText="No"
           >
             <Button icon={<DeleteOutlined />} type="danger" style={{ marginLeft: '8px' }}>
-              Delete
+              Xóa
             </Button>
           </Popconfirm>
         </span>
@@ -276,9 +276,9 @@ const TableComponent = (props) => {
             </Select>
           </MyFormItem> */}
 
-          <MyFormItem {...formItemLayout} name="admin" label="Admin" value={postData.admin} onChange={(e) => setPostData({ ...postData, admin: e.target.value })} >
+          {/* <MyFormItem {...formItemLayout} name="admin" label="Admin" value={postData.admin} onChange={(e) => setPostData({ ...postData, admin: e.target.value })} >
             <Input style={{}} />
-          </MyFormItem >
+          </MyFormItem > */}
 
         </Form>
       </Modal>

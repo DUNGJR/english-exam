@@ -199,20 +199,20 @@ const TableComponent = (props) => {
 
   const columns = [
     // { title: 'ID', dataIndex: 'id', key: 'id' },
-    { title: 'Name', dataIndex: 'name', key: 'name', sorter:(a,b) =>a.name.length - b.name.length,
+    { title: 'Tên', dataIndex: 'name', key: 'name', sorter:(a,b) =>a.name.length - b.name.length,
       ...getColumnSearchProps('name') },
-    { title: 'Topic', dataIndex: 'topic', key: 'topic' },
-    { title: 'Time', dataIndex: 'time', key: 'time', },
-    { title: 'Part', dataIndex: 'part', key: 'part' },
-    { title: 'Question', dataIndex: 'question', key: 'question' },
+    { title: 'Chủ đề', dataIndex: 'topic', key: 'topic' },
+    { title: 'Thời gian làm bài', dataIndex: 'time', key: 'time', },
+    { title: 'Số phần', dataIndex: 'part', key: 'part' },
+    { title: 'Số câu hỏi', dataIndex: 'question', key: 'question' },
     {
-      title: 'Action',
+      title: 'Thực thi',
       key: 'action',
       render: (text, record) => (
         
         <span>    
           <Button icon={<EditOutlined />}  onClick={()=>{setCurrentId(record._id);showModal()}}>
-            Edit
+            Sửa
           </Button>
 
           <Popconfirm
@@ -222,7 +222,7 @@ const TableComponent = (props) => {
             cancelText="No"
           >
             <Button icon={<DeleteOutlined />} type="danger" style={{ marginLeft: '8px' }}>
-              Delete
+              Xóa
             </Button>
           </Popconfirm>
         </span>
@@ -237,7 +237,7 @@ const TableComponent = (props) => {
   return (
     <div>
       <Button type="primary" icon={<PlusOutlined />} onClick={showModal}>
-        Add Product
+        Thêm Đề Thi
       </Button>
 
       <Table dataSource={data} columns={columns} rowKey="id" />

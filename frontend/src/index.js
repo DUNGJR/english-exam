@@ -8,7 +8,6 @@ import {
   QueryClientProvider,
   useQuery,
 } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const queryClient = new QueryClient()
 
@@ -18,7 +17,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <App />
     </Provider>
-    <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   /* </React.StrictMode> */
 );

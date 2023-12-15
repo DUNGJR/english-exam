@@ -3,11 +3,16 @@
 }
 
 .course_list {
-  /* margin: 20px; */
   width: 100%;
   padding: 20px;
   display: inline-block;
+  transition: transform 0.5s;
 }
+
+.course_list:hover {
+  transform: scale(1.02); 
+}
+
 .card {
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -38,6 +43,12 @@
 
 .course_button {
   width: 100%;
-  background-color: #163e6a;
-  color: #fff;
+  /* background-color: var(--color-main); */
+  color: #000;
 }
+
+:where(.css-dev-only-do-not-override-1g853jt).ant-btn-dashed:not(:disabled):not(.ant-btn-disabled):hover {
+  background-color: var(--color-main);
+  color: #ffffff;
+}
+

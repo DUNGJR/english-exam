@@ -2,9 +2,14 @@
   margin-top: 20px;
 }
 
-.card {
+.card_course {
   box-shadow: 5px 5px 5px #ccc;
-  
+  transition: transform 0.5s;
+  margin: 20px;
+}
+
+.card_course:hover {
+  transform: scale(1.05); 
 }
 
 .Ctitle .ant-card-meta-title {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Checkbox, Card, Input, Tooltip, Space, Radio } from 'antd';
 import { UserOutlined, LockOutlined,InfoCircleOutlined, EyeTwoTone, EyeInvisibleOutlined,  GoogleOutlined, FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
-import './Res.css'
+import './register.css'
 import { useNavigate } from 'react-router-dom';
 
 

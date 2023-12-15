@@ -195,9 +195,9 @@ const TableComponent = (props) => {
 
   const columns = [
     // { title: 'ID', dataIndex: 'id', key: 'id' },
-    { title: 'Title', dataIndex: 'title', key: 'title', sorter:(a,b) =>a.title.length - b.title.length,
+    { title: 'Tên', dataIndex: 'title', key: 'title', sorter:(a,b) =>a.title.length - b.title.length,
       ...getColumnSearchProps('title') },
-    { title: 'Desc', dataIndex: 'desc', key: 'desc' },
+    { title: 'Mô tả', dataIndex: 'desc', key: 'desc' },
     { title: 'Video',
     dataIndex: 'videos',
     key: 'video',
@@ -214,13 +214,13 @@ const TableComponent = (props) => {
       </span>
     ),},
     {
-      title: 'Action',
+      title: 'Thực thi',
       key: 'action',
       render: (text, record) => (
         
         <span>    
           <Button icon={<EditOutlined />}  onClick={()=>{setCurrentId(record._id);showModal()}}>
-            Edit
+            Sửa
           </Button>
 
           <Popconfirm
@@ -230,7 +230,7 @@ const TableComponent = (props) => {
             cancelText="No"
           >
             <Button icon={<DeleteOutlined />} type="danger" style={{ marginLeft: '8px' }}>
-              Delete
+              Xóa
             </Button>
           </Popconfirm>
         </span>

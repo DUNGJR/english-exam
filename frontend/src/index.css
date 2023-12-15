@@ -5,7 +5,7 @@
 :root {
     --font-family: 'Roboto', sans-serif;
     
-    --color-bg-navbar: #163E6A;
+    --color-main:#3366FF;
 
     --color-bg:
 }
@@ -52,3 +52,4 @@
     max-width: 25%;
     padding: 12px;
 }
+

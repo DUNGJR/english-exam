@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Card, Typography, Avatar, Button, Tabs } from 'antd';
-import './UserInfo.css';
+import './userpage.css';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;

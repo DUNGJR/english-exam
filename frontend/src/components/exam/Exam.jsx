@@ -1,12 +1,13 @@
 import React from "react";
-import "./content.css";
+import "./exam.css";
 import { Button, Spin } from "antd";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCourse } from "../../actions/posts";
 import { useNavigate } from "react-router-dom";
+import { Row, Col } from 'antd';
 
-const Content = ({ setCurrentId }) => {
+const Exam = ({ setCurrentId }) => {
   const courses = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,8 +31,12 @@ const Content = ({ setCurrentId }) => {
         <div className="grid">
           <h2 className="course_title">DANH SÁCH ĐỀ THI</h2>
           <div className="grid__row">
+
+          <Row>
             {courses.map((course) => (
-              <div className="course_list col-md-3" key={course._id}>
+                <Col xs={24} sm={12} md={8} lg={6}>
+
+              <div className="course_list" key={course._id}>
                 <div className="card">
                   <span className="course_name">{course.name}</span>
                   <p className="course_topic">Bộ đề: {course.topic}</p>
@@ -39,12 +44,15 @@ const Content = ({ setCurrentId }) => {
                     <ClockCircleOutlined style={{}} /> {course.time}
                   </p>
                   <p className="course_detail">{course.part} phần thi | {course.question} câu hỏi</p>
-                  <Button className="course_button" onClick={handleExamClick}>Thi ngay</Button>
+                  <Button type="dashed" className="course_button" onClick={handleExamClick}>Thi ngay</Button>
                     {/* <Button onClick={()=>setCurrentId(course._id)}>update</Button>
                 <Button onClick={()=>dispatch(deleteCourse(course._id))}>delete</Button> */}
                 </div>
               </div>
+              </Col>
             ))}
+            </Row>
+
              {/* <div className="course_list col-md-3">
               <div className="card">
                 <p className="course_name">Đề Listening Part 1</p>
@@ -63,7 +71,7 @@ const Content = ({ setCurrentId }) => {
   );
 };
 
-export default Content;
+export default Exam;
 
 
 

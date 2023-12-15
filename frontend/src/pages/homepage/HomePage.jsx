@@ -1,4 +1,4 @@
-import { Content, Course, Footer } from "../../components"
+import { Exam, Course, Footer } from "../../components"
 import SliderComponent from "../../components/slider/SliderComponent"
 import slider1 from "../../assets/slider1.webp"
 import slider2 from "../../assets/slider2.webp"
@@ -15,7 +15,7 @@ const HomePage = () => {
     <div>
       <SliderComponent arrImages={[slider1, slider2]}></SliderComponent>
       <div style={{ marginTop: 60 }}>
-        <Content setCurrentId={setCurrentId}></Content>
+        <Exam setCurrentId={setCurrentId}></Exam>
       </div>
       <div style={{ marginTop: 60 }}>
         <Course></Course>

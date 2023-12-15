@@ -135,9 +135,9 @@ const Video = () => {
           </Content>
         </Layout>
       </Layout>
-      <Button type="primary" onClick={showModal} style={{ margin: '10px' }}>
+      {/* <Button type="primary" onClick={showModal} style={{ margin: '10px' }}>
         Add Video
-      </Button>
+      </Button> */}
     </Layout>
   );
 };

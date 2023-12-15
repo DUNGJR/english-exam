@@ -4,7 +4,9 @@ import { Flex, Spin } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Card, Avatar } from "antd";
 import { useNavigate } from 'react-router-dom';
+import { Row, Col } from 'antd';
 const { Meta } = Card;
+
 
 
 const Course = () => {
@@ -55,12 +57,12 @@ const Course = () => {
       <div className="grid">
         <h2 className="course_title">DANH SÁCH KHÓA HỌC</h2>
         <div className="grid__row">
+        <Row>
           {studies.map((study)=>(
-              <a href="/course/detail" className="col-md-3" onClick={handleExamClick}>
-              <Card className="card"
-                style={{
-                  width: 280,
-                }}
+            <Col xs={24} sm={12} md={8} lg={6}>
+              <a href="/course/detail" className="" onClick={handleExamClick}>
+              <Card className="card_course"
+                
                 cover={
                   <img
                     alt="example"
@@ -76,7 +78,9 @@ const Course = () => {
                 />
               </Card>
             </a>
+            </Col>
           ))}
+          </Row>
         </div>
       </div>
     </div>
