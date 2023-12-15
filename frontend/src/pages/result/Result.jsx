@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import './result.css';
 import { Link } from 'react-router-dom';
 
-import ResultTable from '../../components/resulttable/ResultTable';
+import ResultTable from '../../components/Resulttable/ResultTable';
 import { useDispatch, useSelector } from 'react-redux';
 import { attempts_Number, earnPoints_Number, flagResult } from '../../helper/helper';
 
@@ -77,7 +77,7 @@ export default function Result() {
 
             <div className="container">
                 {/* result table */}
-                {/* <ResultTable></ResultTable> */}
+                <ResultTable></ResultTable>
             </div>
         </div>
     )
