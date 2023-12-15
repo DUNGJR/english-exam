@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { createCourse, updateCourse } from "../../actions/posts";
 import { BookOutlined, AuditOutlined, ReadOutlined, SoundOutlined, UploadOutlined, EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import CourseTableComponent from "../TableComponent/CourseTableComponent"
-const AdminCourse = () => {
+const AddCourse = () => {
   const [currentId, setCurrentId] = useState(null);
   const [courseData, setCourseData] = useState(null);
 
@@ -48,4 +48,4 @@ const AdminCourse = () => {
     </div>
   )
 }
-export default AdminCourse
+export default AddCourse
